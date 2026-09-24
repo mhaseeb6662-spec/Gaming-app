@@ -291,10 +291,7 @@ export default function HomeScreen() {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           
-          <div className="w-9 h-9 rounded-lg bg-[#004d1c] flex flex-col items-center justify-center border border-green-900/50 shrink-0">
-            <span className="text-[11px] text-white font-black leading-none font-serif tracking-tighter">JJwin</span>
-            <span className="text-[6px] text-white/90 leading-none mt-0.5">.com</span>
-          </div>
+          <img src="/splash-logo.png" alt="8111C" className="h-[28px] w-auto shrink-0 object-contain drop-shadow-[0_0_8px_rgba(57,255,20,0.4)]" />
 
           {/* Text ON ONE LINE */}
           <div className="truncate text-[13px] font-bold tracking-tight">
@@ -325,23 +322,9 @@ export default function HomeScreen() {
             </svg>
           </button>
           
-          {/* Custom King Logo */}
-          <div className="flex items-end shrink-0 relative pt-1">
-            
-            {/* King face silhouette exactly on top of J */}
-            <svg className="w-[18px] h-[19px] shrink-0 absolute -top-[6px] left-[3px] z-10" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 0L8 8L16 0L24 8L30 0V12H2V0Z" fill="white" stroke="white" strokeWidth="1" strokeLinejoin="round"/>
-              <path d="M30 12H14C14 12 10 16 10 19C10 21 12 22 12 22C12 22 10 26 10 28C10 29 12 30 16 30C20 30 24 28 28 30C32 30 32 26 32 26V12Z" fill="white"/>
-            </svg>
-            
-            <div className="font-serif font-black tracking-tighter text-white flex items-baseline leading-none relative z-0" style={{ fontFamily: "Georgia, serif" }}>
-              {/* First J (Massive) with Spade cutout */}
-              <span className="relative inline-block text-[34px] mr-[1px]">
-                J
-                <span className="absolute left-[3px] bottom-[5px] text-[10px] text-[#0a0a0a]">♠</span>
-              </span>
-              <span className="text-[26px] -ml-[3px]">Jwin</span>
-            </div>
+          {/* Custom Logo Image */}
+          <div className="flex items-center shrink-0">
+            <img src="/splash-logo.png" alt="8111C" className="h-[32px] w-auto shrink-0 object-contain drop-shadow-[0_0_12px_rgba(57,255,20,0.5)]" />
           </div>
         </div>
         
