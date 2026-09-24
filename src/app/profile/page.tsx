@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import toast from "react-hot-toast";
 import { ChevronRight, User, Gift, Wallet, CreditCard, Banknote, FileText, Settings, Shield, Search, Globe, HelpCircle, MessageSquare, Smartphone, Moon, Info } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 
@@ -53,16 +54,16 @@ export default function ProfilePage() {
 
         {/* 3 Action Buttons */}
         <div className="flex justify-between items-end mt-8 px-4">
-          <div className="flex flex-col items-center gap-2 relative">
+          <div onClick={() => toast.success("Feature coming soon: Integration in progress")} className="flex flex-col items-center gap-2 relative cursor-pointer hover:scale-105 transition-transform">
             <Banknote className="w-9 h-9 text-[#ffdf00]" />
             <span className="text-white font-medium text-[12px]">Withdraw</span>
           </div>
-          <div className="flex flex-col items-center gap-2 relative">
+          <div onClick={() => toast.success("Feature coming soon: Integration in progress")} className="flex flex-col items-center gap-2 relative cursor-pointer hover:scale-105 transition-transform">
             <div className="absolute -top-3 -right-3 bg-[#cc0000] text-white text-[9px] font-black px-1.5 py-0.5 rounded-full border border-[#111] z-10">+3%</div>
             <Wallet className="w-9 h-9 text-[#ffdf00]" />
             <span className="text-white font-medium text-[12px]">Deposit</span>
           </div>
-          <div className="flex flex-col items-center gap-2 relative">
+          <div onClick={() => toast.success("Feature coming soon: Integration in progress")} className="flex flex-col items-center gap-2 relative cursor-pointer hover:scale-105 transition-transform">
             <div className="absolute -top-3 -right-3 bg-[#cc0000] text-white text-[9px] font-black px-1.5 py-0.5 rounded-full border border-[#111] z-10">50%</div>
             <CreditCard className="w-9 h-9 text-[#ffdf00]" />
             <span className="text-white font-medium text-[12px]">Fund</span>
@@ -101,3 +102,4 @@ export default function ProfilePage() {
     </main>
   );
 }
+
