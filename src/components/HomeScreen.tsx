@@ -41,7 +41,7 @@ const miniGamesList = [
   { 
     name: "Blockchain", 
     img: "bg-gradient-to-b from-[#2b2b68] via-[#4d4d99] to-[#3ca33c]", 
-    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff]">WG</span>, 
+    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#00aaff]">WG</span>, 
     graphic: "🦜🚀", 
     popups: ["coin"] 
   },
@@ -69,7 +69,7 @@ const slotGamesList = [
        "bg-gradient-to-t from-green-600 to-emerald-400"
     ],
     graphic: ["🎰", "🤠", "🦁"],
-    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff] drop-shadow-md">WG</span>, 
+    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#00aaff] drop-shadow-md">WG</span>, 
   },
   { 
     name: "PG Slots", 
@@ -124,7 +124,7 @@ const fishingGamesList = [
   { 
     name: "WG Fishing", 
     img: "bg-gradient-to-b from-[#0c4a85] via-[#187bcd] to-[#3ca33c]", 
-    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff] drop-shadow-md text-[15px]">WG</span>, 
+    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#00aaff] drop-shadow-md text-[15px]">WG</span>, 
     graphic: "👲" 
   },
   { 
@@ -139,7 +139,7 @@ const cardsGamesList = [
   { 
     name: "WG Cards", 
     img: "bg-gradient-to-b from-[#5c2a85] via-[#7d3cb3] to-[#3ca33c]", 
-    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff] drop-shadow-md text-[15px]">WG</span>, 
+    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#00aaff] drop-shadow-md text-[15px]">WG</span>, 
     graphic: "🚘", 
     popups: ["coin_top", "huge_bottom"] 
   },
@@ -194,7 +194,7 @@ const sportsGamesList = [
   { 
     name: "WG Sports", 
     img: "bg-gradient-to-b from-[#3ba4ff] via-[#5cb8ff] to-[#3ca33c]", 
-    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff] drop-shadow-md text-[16px] italic font-black">WG</span>, 
+    logo: <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#00aaff] drop-shadow-md text-[16px] italic font-black">WG</span>, 
     graphic: "🏃‍♂️", 
     star: true
   },
@@ -445,9 +445,9 @@ export default function HomeScreen() {
         {/* Alliance Cards (Pixel Perfect) */}
         <div className="px-3 mb-4 grid grid-cols-3 gap-2">
           {[
-            { logo: "PKR365", text: "Rs 666", color: "from-[#051f10]", border: "border-[#00ff00]", shadow: "shadow-[0_0_10px_rgba(0,255,0,0.2)]", icon: "🦅" },
+            { logo: "PKR365", text: "Rs 666", color: "from-[#2e0505]", border: "border-[#ff0b0b]", shadow: "shadow-[0_0_10px_rgba(255,11,11,0.3)]", icon: "🦅" },
             { logo: "PKRBET", text: "Rs 888", color: "from-[#0a1a2f]", border: "border-[#00aaff]", shadow: "shadow-[0_0_10px_rgba(0,170,255,0.2)]", icon: "🐔" },
-            { logo: "PX8888", text: "Rs 888", color: "from-[#1a1a1a]", border: "border-[#00ff00]", shadow: "shadow-[0_0_10px_rgba(0,255,0,0.2)]", icon: "👑" },
+            { logo: "PX8888", text: "Rs 888", color: "from-[#1a1a1a]", border: "border-[#ff0b0b]", shadow: "shadow-[0_0_10px_rgba(255,11,11,0.3)]", icon: "👑" },
           ].map((card, i) => (
             <div key={i} className={`relative rounded-xl bg-gradient-to-b ${card.color} to-[#0a0a0a] border border-neutral-800 border-b-[2px] ${card.border} p-1.5 flex flex-col items-center justify-between h-[85px] ${card.shadow}`}>
               {/* Red dot */}
@@ -460,7 +460,7 @@ export default function HomeScreen() {
               <div className="text-[28px] mt-auto mb-1 opacity-90 drop-shadow-md">{card.icon}</div>
               
               <div className="w-full bg-black/80 rounded-full py-[3px] px-1 border border-white/10 text-center relative z-10 mt-auto flex flex-col items-center">
-                 <p className="text-[8px] text-white font-bold leading-none whitespace-nowrap mb-[2px]">Free to claim <span className="text-[#00ff00]">{card.text}</span></p>
+                 <p className="text-[8px] text-white font-bold leading-none whitespace-nowrap mb-[2px]">Free to claim <span className="text-[#ffdf00]">{card.text}</span></p>
                  <div className="bg-black text-white text-[6px] border border-neutral-600 rounded-full py-[1px] px-1 font-bold leading-none w-fit">Cooperation Alliance</div>
               </div>
             </div>
@@ -616,7 +616,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center text-[45px] drop-shadow-2xl -translate-y-4">
@@ -625,8 +625,8 @@ export default function HomeScreen() {
                 
                 {/* Fake popups for specific games */}
                 {game.popups?.includes("coin") && (
-                  <div className="absolute bottom-2 left-0 w-12 h-12 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-200 -translate-x-3 z-20">
-                     <span className="text-[8px] font-bold text-red-700">Rs600</span>
+                  <div className="absolute bottom-2 left-0 w-12 h-12 bg-gradient-to-br from-[#ff0b0b] to-[#cc0000] rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-3 z-20">
+                     <span className="text-[8px] font-bold text-white">Rs600</span>
                   </div>
                 )}
 
@@ -671,7 +671,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img || 'bg-neutral-900'} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img || 'bg-neutral-900'} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 
                 {game.collage ? (
@@ -693,13 +693,13 @@ export default function HomeScreen() {
                 
                 {/* Fake popups for specific games */}
                 {game.popups?.includes("coin_top") && (
-                  <div className="absolute top-2 left-0 w-12 h-12 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-200 -translate-x-3 z-20">
-                     <span className="text-[8px] font-bold text-red-700">Rs600</span>
+                  <div className="absolute top-2 left-0 w-12 h-12 bg-gradient-to-br from-[#ff0b0b] to-[#cc0000] rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-3 z-20">
+                     <span className="text-[8px] font-bold text-white">Rs600</span>
                   </div>
                 )}
                 {game.popups?.includes("wheel_bottom") && (
-                  <div className="absolute bottom-6 left-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-green-500 -translate-x-2 z-20">
-                     <div className="absolute bottom-0 w-full bg-[#39ff14] text-white text-[8px] font-bold text-center border-2 border-white rounded">Rs 888</div>
+                  <div className="absolute bottom-6 left-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-2 z-20">
+                     <div className="absolute bottom-0 w-full bg-[#cc0000] text-white text-[8px] font-bold text-center border-2 border-[#ffdf00] rounded">Rs 888</div>
                   </div>
                 )}
                 {game.popups?.includes("aviator_multiplier") && (
@@ -754,7 +754,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center text-[55px] drop-shadow-2xl -translate-y-4">
@@ -802,7 +802,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center text-[55px] drop-shadow-2xl -translate-y-4">
@@ -811,14 +811,14 @@ export default function HomeScreen() {
                 
                 {/* Fake popups for specific games */}
                 {game.popups?.includes("coin_top") && (
-                  <div className="absolute top-4 left-0 w-11 h-11 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-200 -translate-x-2 z-20">
-                     <span className="text-[7px] font-bold text-red-700">Rs600</span>
+                  <div className="absolute top-4 left-0 w-11 h-11 bg-gradient-to-br from-[#ff0b0b] to-[#cc0000] rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-2 z-20">
+                     <span className="text-[7px] font-bold text-white">Rs600</span>
                   </div>
                 )}
                 {game.popups?.includes("huge_bottom") && (
                   <div className="absolute bottom-6 -left-2 flex flex-col items-start z-20 transform scale-90">
                      <span className="text-3xl drop-shadow-xl translate-x-3 translate-y-2">🛩️</span>
-                     <div className="bg-[#39ff14] text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-white shadow-lg whitespace-nowrap">Rs 10000</div>
+                     <div className="bg-[#ffdf00] text-white text-[10px] font-black px-2 py-0.5 rounded-full border border-white shadow-lg whitespace-nowrap">Rs 10000</div>
                   </div>
                 )}
                 {game.popups?.includes("trophies") && (
@@ -870,7 +870,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Optional Star in Top Right */}
                 {game.star && (
@@ -925,7 +925,7 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Optional Star in Top Right */}
                 {game.star && (
@@ -941,13 +941,13 @@ export default function HomeScreen() {
 
                 {/* Fake popups for specific games */}
                 {game.popups?.includes("coin_top") && (
-                  <div className="absolute top-4 left-0 w-11 h-11 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-200 -translate-x-2 z-20">
-                     <span className="text-[7px] font-bold text-red-700">Rs600</span>
+                  <div className="absolute top-4 left-0 w-11 h-11 bg-gradient-to-br from-[#ff0b0b] to-[#cc0000] rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-2 z-20">
+                     <span className="text-[7px] font-bold text-white">Rs600</span>
                   </div>
                 )}
                 {game.popups?.includes("wheel_bottom") && (
-                  <div className="absolute bottom-6 left-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-green-500 -translate-x-2 z-20">
-                     <div className="absolute bottom-0 w-full bg-[#39ff14] text-white text-[7px] font-bold text-center border-2 border-white rounded">Rs 888</div>
+                  <div className="absolute bottom-6 left-0 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-[#ffdf00] -translate-x-2 z-20">
+                     <div className="absolute bottom-0 w-full bg-[#ffdf00] text-white text-[7px] font-bold text-center border-2 border-white rounded">Rs 888</div>
                   </div>
                 )}
                 {game.popups?.includes("deposit_rewards") && (
@@ -1032,12 +1032,12 @@ export default function HomeScreen() {
           {/* Top Coin Popup */}
           <div className="relative mb-3 pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
             {/* Green arrow indicator */}
-            <div className="absolute -left-1 z-20 w-4 h-4 bg-[#39ff14] rounded-full flex items-center justify-center shadow-md">
+            <div className="absolute -left-1 z-20 w-4 h-4 bg-[#ffdf00] rounded-full flex items-center justify-center shadow-md">
                <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth="4" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
             </div>
             
-            <div className="w-[42px] h-[42px] bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-[0_0_12px_rgba(255,200,0,0.5)] border-2 border-yellow-200 relative z-10 ml-1.5">
-               <span className="text-[9px] font-black text-red-700 italic drop-shadow-sm">Rs600</span>
+            <div className="w-[42px] h-[42px] bg-gradient-to-br from-[#ff0b0b] to-[#cc0000] rounded-full flex items-center justify-center shadow-[0_0_12px_rgba(255,200,0,0.5)] border-2 border-[#ffdf00] relative z-10 ml-1.5">
+               <span className="text-[9px] font-black text-white italic drop-shadow-sm">Rs600</span>
                <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-black rounded-full flex items-center justify-center shadow-lg border border-neutral-700 group-hover:bg-neutral-800 transition-colors">
                  <span className="text-white text-[7px] font-bold">x</span>
                </div>
@@ -1046,15 +1046,15 @@ export default function HomeScreen() {
           
           {/* Bottom Wheel Popup */}
           <div className="relative pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
-            <div className="w-[48px] h-[48px] bg-white rounded-full flex items-center justify-center shadow-xl border-[2.5px] border-[#39ff14] relative z-10">
+            <div className="w-[48px] h-[48px] bg-white rounded-full flex items-center justify-center shadow-xl border-[2.5px] border-[#ffdf00] relative z-10">
                <div className="absolute -top-1.5 right-0 w-3.5 h-3.5 bg-black rounded-full flex items-center justify-center shadow-lg border border-neutral-700 group-hover:bg-neutral-800 transition-colors z-30">
                  <span className="text-white text-[7px] font-bold">x</span>
                </div>
                {/* Inner wheel mockup */}
                <div className="w-7 h-7 rounded-full border border-pink-400 flex items-center justify-center overflow-hidden shadow-inner">
-                 <div className="w-3 h-3 bg-[#39ff14] rounded-full absolute shadow-inner"></div>
+                 <div className="w-3 h-3 bg-[#ffdf00] rounded-full absolute shadow-inner"></div>
                </div>
-               <div className="absolute -bottom-1 w-[110%] bg-[#39ff14] text-white text-[8px] font-black text-center rounded px-0.5 shadow-md">Rs 500</div>
+               <div className="absolute -bottom-1 w-[110%] bg-[#ffdf00] text-white text-[8px] font-black text-center rounded px-0.5 shadow-md">Rs 500</div>
                
                <div className="absolute -top-2 -left-1 text-[13px] drop-shadow-md z-20 pointer-events-none">🐔</div>
                <div className="absolute top-1 -right-3 text-[18px] drop-shadow-md z-0 pointer-events-none">💃</div>
