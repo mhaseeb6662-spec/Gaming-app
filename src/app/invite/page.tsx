@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function InvitePage() {
   const [activeTab, setActiveTab] = useState("Home");
-  const tabs = ["Home", "Promotion Sharing", "My Data", "Performance", "Commission", "Subordinate"];
+  const tabs = ["Home", "Promotion Sharing", "My Data", "Performance", "Commission", "Subordinate Information", "Subordinate Betting", "Subordinate Finance", "Subordinate claim"];
   
   const [dateModalOpen, setDateModalOpen] = useState(false);
 
@@ -407,13 +407,116 @@ export default function InvitePage() {
             </motion.div>
           )}
 
-          {(activeTab === "Commission" || activeTab === "Subordinate") && (
-            <motion.div key="other" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 flex justify-center text-neutral-500">
-              Content for {activeTab} coming soon
+          {(activeTab === "Commission") && (
+            <motion.div key="commission" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="text-[12px] text-neutral-400 px-2 pb-2 border-b border-neutral-800">
+                Settlement cycle <span className="text-white">-</span>
+              </div>
+              
+              <button 
+                onClick={() => setDateModalOpen(true)}
+                className="self-start border border-[#ff0b0b] rounded-full px-4 py-1.5 flex items-center gap-1.5 text-[#ffdf00] text-[11px] hover:bg-[#2e0505] transition-colors"
+              >
+                Today <ChevronLeft className="w-3.5 h-3.5 rotate-90" />
+              </button>
+
+              <div className="flex-1 flex items-center justify-center pt-20 pb-40">
+                <p className="text-neutral-500 text-sm">No data available</p>
+              </div>
             </motion.div>
           )}
 
-        </AnimatePresence>
+          {(activeTab === "Subordinate Information") && (
+            <motion.div key="sub-info" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="flex gap-2 mb-4">
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Today <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Sort by login date <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                  Member ID
+                  <span className="text-[#ffdf00]">🔍</span>
+                </button>
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-40 gap-4 opacity-50">
+                <div className="w-24 h-24 bg-neutral-800 rounded-2xl flex items-center justify-center relative shadow-inner">
+                   {/* Empty box graphic mockup */}
+                   <div className="absolute top-2 right-2 text-3xl opacity-20 -rotate-12">✈️</div>
+                   <div className="w-16 h-12 bg-neutral-700 rounded-lg border-t-2 border-neutral-600"></div>
+                </div>
+                <div className="flex items-center gap-2 text-neutral-500 text-[13px]">
+                  No content yet <span className="text-[#ffdf00]">↻</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Subordinate Betting") && (
+            <motion.div key="sub-betting" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8 relative">
+              <div className="flex gap-2 mb-4">
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Today <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-[#ffdf00] rounded-full px-3 py-1 flex items-center gap-1 text-[#ffdf00] text-[11px] bg-[#2e0505]">
+                  Valid bet sorting <ChevronLeft className="w-3 h-3 -rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                  Member ID
+                  <span className="text-[#ffdf00]">🔍</span>
+                </button>
+              </div>
+              
+              {/* Dropdown Menu Mockup */}
+              <div className="absolute top-12 left-24 w-48 bg-[#1c1c1c] rounded-xl border border-neutral-700 p-2 shadow-2xl z-20 flex flex-col">
+                 <button className="text-left px-3 py-2 text-[#ffdf00] font-bold text-[12px]">Valid bet sorting</button>
+                 <button className="text-left px-3 py-2 text-neutral-400 text-[12px] leading-tight hover:bg-neutral-800 rounded-lg">Cumulative win and loss sorting</button>
+              </div>
+
+              <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-40 gap-4 opacity-50">
+                <div className="w-24 h-24 bg-neutral-800 rounded-2xl flex items-center justify-center relative shadow-inner">
+                   <div className="absolute top-2 right-2 text-3xl opacity-20 -rotate-12">✈️</div>
+                   <div className="w-16 h-12 bg-neutral-700 rounded-lg border-t-2 border-neutral-600"></div>
+                </div>
+                <div className="flex items-center gap-2 text-neutral-500 text-[13px]">
+                  No content yet <span className="text-[#ffdf00]">↻</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Subordinate Finance") && (
+            <motion.div key="sub-finance" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="flex gap-2 mb-4">
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Today <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Sort by recharge... <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                  Member ID
+                  <span className="text-[#ffdf00]">🔍</span>
+                </button>
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-40 gap-4 opacity-50">
+                <div className="w-24 h-24 bg-neutral-800 rounded-2xl flex items-center justify-center relative shadow-inner">
+                   <div className="absolute top-2 right-2 text-3xl opacity-20 -rotate-12">✈️</div>
+                   <div className="w-16 h-12 bg-neutral-700 rounded-lg border-t-2 border-neutral-600"></div>
+                </div>
+                <div className="flex items-center gap-2 text-neutral-500 text-[13px]">
+                  No content yet <span className="text-[#ffdf00]">↻</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Subordinate claim") && (
+            <motion.div key="sub-claim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 flex justify-center text-neutral-500">
+              Content for Subordinate claim coming soon
+            </motion.div>
+          )}
       </div>
 
       <BottomNav activeTab="invite" />
