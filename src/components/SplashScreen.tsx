@@ -76,20 +76,15 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         transition={{
           duration: 1.2,
           delay: 0.5,
-          ease: [0.16, 1, 0.3, 1], // Custom cinematic easing
+          ease: [0.16, 1, 0.3, 1],
         }}
-        className="z-10 flex flex-col items-center relative"
+        className="z-10 flex flex-col items-center relative w-[90%] max-w-sm"
       >
-        {/* Glassmorphism backing for logo */}
-        <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-3xl -m-6 border border-white/10 shadow-[0_0_50px_rgba(74,222,128,0.2)]" />
-        
-        <div className="relative flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-green-400 to-green-700 shadow-[0_0_30px_rgba(74,222,128,0.5)] mb-4">
-          <Gamepad2 className="w-12 h-12 text-black" />
-        </div>
-        <h1 className="text-4xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400 relative">
-          NEXUS<span className="text-green-500">WIN</span>
-        </h1>
-        <p className="text-green-400/80 text-sm mt-2 font-medium tracking-[0.2em] uppercase">Premium Gaming</p>
+        <img 
+          src="/splash-logo.png" 
+          alt="Premium Casino Game" 
+          className="w-full h-auto drop-shadow-[0_0_30px_rgba(57,255,20,0.3)]"
+        />
       </motion.div>
 
       {/* Loading bar at bottom */}
