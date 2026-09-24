@@ -1,0 +1,117 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { Gamepad2 } from "lucide-react";
+
+export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    // Simulate loading progress
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setTimeout(onComplete, 500); // Wait a bit before completing
+          return 100;
+        }
+        return prev + 2;
+      });
+    }, 40);
+
+    return () => clearInterval(interval);
+  }, [onComplete]);
+
+  // Particle generation
+  const particles = Array.from({ length: 20 }).map((_, i) => ({
+    id: i,
+    x: Math.random() * 100,
+    y: Math.random() * 100,
+    size: Math.random() * 4 + 2,
+    delay: Math.random() * 2,
+    duration: Math.random() * 3 + 2,
+  }));
+
+  return (
+    <div className="relative w-full h-screen bg-black overflow-hidden flex flex-col items-center justify-center font-sans">
+      {/* Background ambient glow */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2 }}
+        className="absolute inset-0 z-0"
+      >
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/20 rounded-full blur-[100px]" />
+      </motion.div>
+
+      {/* Floating particles */}
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          initial={{
+            opacity: 0,
+            x: `${p.x}vw`,
+            y: `${p.y}vh`,
+          }}
+          animate={{
+            opacity: [0, 0.8, 0],
+            y: [`${p.y}vh`, `${p.y - 20}vh`],
+          }}
+          transition={{
+            duration: p.duration,
+            delay: p.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute z-0 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)]"
+          style={{ width: p.size, height: p.size }}
+        />
+      ))}
+
+      {/* Logo Container */}
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0, filter: "blur(10px)" }}
+        animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+        transition={{
+          duration: 1.2,
+          delay: 0.5,
+          ease: [0.16, 1, 0.3, 1], // Custom cinematic easing
+        }}
+        className="z-10 flex flex-col items-center relative"
+      >
+        {/* Glassmorphism backing for logo */}
+        <div className="absolute inset-0 bg-white/5 backdrop-blur-xl rounded-3xl -m-6 border border-white/10 shadow-[0_0_50px_rgba(74,222,128,0.2)]" />
+        
+        <div className="relative flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-green-400 to-green-700 shadow-[0_0_30px_rgba(74,222,128,0.5)] mb-4">
+          <Gamepad2 className="w-12 h-12 text-black" />
+        </div>
+        <h1 className="text-4xl font-black tracking-wider text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-400 relative">
+          NEXUS<span className="text-green-500">WIN</span>
+        </h1>
+        <p className="text-green-400/80 text-sm mt-2 font-medium tracking-[0.2em] uppercase">Premium Gaming</p>
+      </motion.div>
+
+      {/* Loading bar at bottom */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-16 w-64 z-10 flex flex-col items-center"
+      >
+        <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
+          <motion.div
+            className="h-full bg-green-500 shadow-[0_0_10px_rgba(74,222,128,1)]"
+            style={{ width: `${progress}%` }}
+            initial={{ width: "0%" }}
+            animate={{ width: `${progress}%` }}
+            transition={{ ease: "linear" }}
+          />
+        </div>
+        <div className="mt-3 text-neutral-500 text-xs font-mono">
+          LOADING RESOURCES... {Math.round(progress)}%
+        </div>
+      </motion.div>
+    </div>
+  );
+}
