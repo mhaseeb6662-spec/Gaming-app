@@ -102,7 +102,7 @@ export default function SupportPage() {
                 {subTab === "Other Support" && (
                   <>
                     {/* Line 1 */}
-                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                    <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border-b border-neutral-800 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-[#1da1f2] flex items-center justify-center shrink-0 shadow-md">
                         <HeadsetIcon className="w-5 h-5 text-white" />
                       </div>
@@ -114,11 +114,10 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div></a>
 
                     {/* Line 2 */}
-                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                    <a href="https://whatsapp.com/channel/0029VbDJdVw7j6gCK3T1YG0i" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border-b border-neutral-800 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shrink-0 shadow-md">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-6 h-6 invert" />
                       </div>
@@ -130,11 +129,11 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div>
+                    </a>
 
                     {/* Line 3 */}
-                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                    <a href="https://www.facebook.com/share/1JzvPey4hQ/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border-b border-neutral-800 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shrink-0 shadow-md">
                         <span className="text-white font-bold text-xl font-serif">f</span>
                       </div>
@@ -146,11 +145,11 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div>
+                    </a>
 
                     {/* Line 4 */}
-                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                    <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border-b border-neutral-800 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center shrink-0 shadow-md">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG" className="w-5 h-5 invert" />
                       </div>
@@ -162,11 +161,10 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div></a>
 
                     {/* Line 5 */}
-                    <div className="flex items-center gap-3 p-4">
+                    <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-black border border-neutral-700 flex items-center justify-center shrink-0 shadow-md">
                         <span className="text-white font-bold text-xl">??</span>
                       </div>
@@ -178,15 +176,14 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div></a>
                   </>
                 )}
 
                 {subTab === "Telegram Support" && (
                   <>
                     {/* Line 1 */}
-                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                    <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 border-b border-neutral-800 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center shrink-0 shadow-md">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-10 h-10" />
                       </div>
@@ -198,11 +195,10 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div></a>
 
                     {/* Line 2 */}
-                    <div className="flex items-center gap-3 p-4">
+                    <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 hover:bg-white/5 transition-colors block w-full">
                       <div className="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center shrink-0 shadow-md">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-10 h-10" />
                       </div>
@@ -214,8 +210,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
-                    </div>
+                      <div className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center shrink-0">Contact<br/>Now</div></a>
                   </>
                 )}
 
@@ -404,5 +399,6 @@ function HeadsetIcon(props: any) {
     </svg>
   );
 }
+
 
 
