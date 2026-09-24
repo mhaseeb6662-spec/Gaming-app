@@ -291,7 +291,7 @@ export default function HomeScreen() {
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           
-          <img src="/splash-logo.png" alt="8111C" className="h-[28px] w-auto shrink-0 object-contain drop-shadow-[0_0_8px_rgba(57,255,20,0.4)]" />
+          <img src="/splash-logo.png" alt="8111C" className="h-[28px] w-auto shrink-0 object-contain mix-blend-screen" />
 
           {/* Text ON ONE LINE */}
           <div className="truncate text-[13px] font-bold tracking-tight">
@@ -322,9 +322,9 @@ export default function HomeScreen() {
             </svg>
           </button>
           
-          {/* Custom Logo Image */}
+          {/* Custom Logo Image with screen blend mode to remove black background */}
           <div className="flex items-center shrink-0">
-            <img src="/splash-logo.png" alt="8111C" className="h-[32px] w-auto shrink-0 object-contain drop-shadow-[0_0_12px_rgba(57,255,20,0.5)]" />
+            <img src="/splash-logo.png" alt="8111C" className="h-[32px] w-auto shrink-0 object-contain mix-blend-screen" />
           </div>
         </div>
         

@@ -83,7 +83,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         <img 
           src="/splash-logo.png" 
           alt="Premium Casino Game" 
-          className="w-full h-auto drop-shadow-[0_0_30px_rgba(57,255,20,0.3)]"
+          className="w-full h-auto mix-blend-screen"
         />
       </motion.div>
 
