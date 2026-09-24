@@ -26,6 +26,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
   // Particle generation
   const [particles, setParticles] = useState<{id: number, x: number, y: number, size: number, delay: number, duration: number}[]>([]);
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setParticles(
       Array.from({ length: 20 }).map((_, i) => ({
         id: i,
