@@ -18,7 +18,7 @@ export default function PromoPage() {
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [showRedeemModal, setShowRedeemModal] = useState(false);
 
-  const topTabs = ["Event", "Unclaimed", "Rebate", "Mission", "Spins", "VIP"];
+  const topTabs = ["Event", "Unclaimed", "Rebate", "Mission", "Spins", "VIP", "History", "Fund"];
   
   const eventSideTabs = [
     { id: "All", icon: <Grid className="w-5 h-5" /> },
@@ -589,6 +589,87 @@ export default function PromoPage() {
           </div>
         )}
 
+        {/* HISTORY TAB CONTENT */}
+        {activeTopTab === "History" && (
+          <div className="flex-1 flex flex-col overflow-y-auto no-scrollbar bg-[#111]">
+            <div className="p-3 border-b border-neutral-800 flex gap-2">
+              <button className="flex items-center gap-1 border border-neutral-700 rounded-full px-3 py-1 text-neutral-400 text-[12px]">
+                Today <ChevronDown className="w-3 h-3" />
+              </button>
+              <button className="flex items-center gap-1 border border-neutral-700 rounded-full px-3 py-1 text-neutral-400 text-[12px]">
+                All Status <ChevronDown className="w-3 h-3" />
+              </button>
+              <button className="flex items-center gap-1 border border-neutral-700 rounded-full px-3 py-1 text-neutral-400 text-[12px]">
+                All Types <ChevronDown className="w-3 h-3" />
+              </button>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-center opacity-50 mb-4">
+              <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-500 text-[13px]">Today No Records,but <span className="text-[#cc0000] font-medium">Read More</span></span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* FUND TAB CONTENT */}
+        {activeTopTab === "Fund" && (
+          <div className="flex-1 flex flex-col overflow-y-auto no-scrollbar bg-[#111]">
+            
+            {/* Top Stats Box */}
+            <div className="bg-[#1a1a1a] p-4 m-3 rounded-lg border border-neutral-800 flex flex-col gap-4">
+              <div className="flex justify-between relative">
+                <div className="absolute left-1/2 top-0 bottom-0 w-px bg-neutral-800"></div>
+                <div className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-neutral-500 text-[12px]">Total deposit</span>
+                  <span className="text-white font-bold text-[20px]">0.00</span>
+                  <div className="relative mt-2">
+                    <span className="absolute -top-3 -right-6 bg-[#cc0000] text-white text-[9px] font-bold px-1 rounded-sm shadow">+50%</span>
+                    <button className="bg-gradient-to-r from-[#ffdf00] to-[#ffaa00] text-[#4a2e00] font-bold text-[12px] px-6 py-1 rounded shadow-md">Deposit</button>
+                  </div>
+                </div>
+                <div className="flex-1 flex flex-col items-center gap-1">
+                  <span className="text-neutral-500 text-[12px]">Fund</span>
+                  <span className="text-[#ffdf00] font-bold text-[20px]">0.00</span>
+                  <div className="relative mt-2">
+                    <button className="bg-neutral-600 text-neutral-300 font-bold text-[12px] px-6 py-1 rounded shadow-md">Withdraw</button>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="flex flex-col gap-0.5 text-[10px] text-neutral-500 mt-2">
+                <div>Bonus cap <span className="text-white font-medium">not to be capped</span></div>
+                <div>Times capped <span className="text-white font-medium">not to be capped</span></div>
+              </div>
+            </div>
+
+            {/* Sub Tabs */}
+            <div className="flex border-b border-neutral-800 text-[13px] font-medium bg-[#1a1a1a]">
+              <button className="flex-1 text-[#cc0000] py-3 border-b-2 border-[#cc0000]">Total records</button>
+              <button className="flex-1 text-white py-3">Cumulative betting requirements</button>
+              <button className="px-4 text-white py-3">Rules</button>
+            </div>
+
+            {/* Records Section */}
+            <div className="p-3">
+              <div className="flex justify-between items-center mb-6">
+                <button className="flex items-center justify-between w-24 border border-neutral-700 rounded-full px-3 py-1.5 text-neutral-400 text-[12px]">
+                  Today <ChevronDown className="w-3 h-3" />
+                </button>
+                <div className="text-neutral-500 text-[12px]">Total <span className="text-[#ffdf00] font-bold">0.00</span></div>
+              </div>
+
+              <div className="flex flex-col items-center justify-center opacity-50 mt-10">
+                <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
+                <div className="flex items-center gap-2">
+                  <span className="text-neutral-500 text-[13px]">Today No Records,but <span className="text-[#cc0000] font-medium">Read More</span></span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        )}
+
       </div>
 
       {/* Linked Phone Number Modal */}
@@ -652,4 +733,5 @@ function Banner({ title, desc, highlight, sub, icon, badge }: { title: string, d
     </div>
   );
 }
+
 
