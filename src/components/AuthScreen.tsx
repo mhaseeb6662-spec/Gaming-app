@@ -162,7 +162,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
               {/* Register Button */}
               <div className="relative mt-2">
                 {/* Floating bonus tag */}
-                <div className="absolute -top-3 -right-2 bg-gradient-to-r from-[#00b09b] to-[#96c93d] text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-lg z-10 flex items-center gap-0.5 transform rotate-6 border border-white/20">
+                <div className="absolute -top-3 -right-2 bg-gradient-to-r from-[#ff0b0b] to-[#cc0000] text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-lg z-10 flex items-center gap-0.5 transform rotate-6 border border-white/20">
                   <span className="text-[10px]">🎁</span>
                   10-666
                 </div>
