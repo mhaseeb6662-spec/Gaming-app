@@ -188,7 +188,7 @@ export default function SupportPage() {
             </motion.div>
           )}
 
-          {(activeTab === "News" || activeTab === "Notice" || activeTab === "Marquee") && (
+          {(activeTab === "News") && (
             <motion.div key="news" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
               {/* Filters */}
               <div className="flex gap-2 mb-2">
@@ -223,6 +223,96 @@ export default function SupportPage() {
                     </div>
                     <div className="flex items-center gap-1 shrink-0">
                       <span className="text-[12px] font-bold text-white group-hover:text-[#ffdf00] transition-colors">Unread</span>
+                      <ChevronRight className="w-4 h-4 text-neutral-500" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Notice") && (
+            <motion.div key="notice" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="flex gap-2 mb-2">
+                <div className="bg-[#141414] border border-neutral-700 rounded-full px-3 py-1.5 flex items-center gap-1 text-neutral-400 text-[11px] shrink-0">
+                  All <ChevronLeft className="w-3 h-3 -rotate-90 ml-2" />
+                </div>
+                <div className="bg-[#141414] border border-neutral-700 rounded-full px-3 py-1.5 flex items-center gap-1 text-neutral-400 text-[11px] shrink-0">
+                  All <ChevronLeft className="w-3 h-3 -rotate-90 ml-2" />
+                </div>
+                <div className="flex-1 flex items-center bg-[#141414] border border-neutral-700 rounded-full px-3 py-1.5 shadow-inner">
+                  <input type="text" placeholder="Search" className="bg-transparent border-none outline-none text-[11px] text-white w-full placeholder:text-neutral-500" />
+                  <Search className="w-3.5 h-3.5 text-[#ffdf00] shrink-0" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2.5">
+                {[
+                  { title: "🌸 New User Recharge bonus ondep...", date: "23/09/2026 12:00:00" },
+                  { title: "🌸 New User Recharge bonus ondep...", date: "22/09/2026 12:00:00" },
+                  { title: "🎉 Huge Tuesday Bonus Waiting!", date: "22/09/2026 12:00:00" },
+                  { title: "📢 EVO Live Casino Weekly Rewar...", date: "21/09/2026 12:00:00" },
+                  { title: "📢 Cricket Sport Weekly Allowances...", date: "21/09/2026 08:00:00" },
+                  { title: "🚀 Hey 8111C Players in Pakistan! 🎉", date: "21/09/2026 00:00:00" },
+                  { title: "🌸 New User Recharge bonus ondep...", date: "20/09/2026 12:00:00" },
+                  { title: "🌸 New User Recharge bonus ondep...", date: "18/09/2026 12:00:00" }
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#1c1c1c] rounded-lg p-3 flex items-center gap-3 border border-neutral-800 shadow-md cursor-pointer hover:border-[#ff0b0b] transition-colors group">
+                    <div className="relative shrink-0">
+                       <MessageCircle className="w-6 h-6 fill-neutral-600 text-neutral-600 group-hover:fill-[#ffdf00] group-hover:text-[#ffdf00] transition-colors" />
+                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-0.5">
+                         <div className="w-1 h-1 bg-[#1c1c1c] rounded-full"></div>
+                         <div className="w-1 h-1 bg-[#1c1c1c] rounded-full"></div>
+                         <div className="w-1 h-1 bg-[#1c1c1c] rounded-full"></div>
+                       </div>
+                       <div className="w-2.5 h-2.5 rounded-full bg-[#cc0000] absolute -top-1 -right-1 border-2 border-[#1c1c1c]"></div>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center">
+                      <h4 className="text-[12px] font-bold text-white truncate">{item.title}</h4>
+                      <span className="text-[9px] text-neutral-500 mt-0.5">{item.date}</span>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0">
+                      <span className="text-[12px] font-bold text-white group-hover:text-[#ffdf00] transition-colors">Unread</span>
+                      <ChevronRight className="w-4 h-4 text-neutral-500" />
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              <div className="flex justify-center gap-2 mt-4 pb-4">
+                <button className="w-8 h-8 flex items-center justify-center rounded bg-[#cc0000] text-white font-bold text-[12px] shadow-md">1</button>
+                <button className="w-8 h-8 flex items-center justify-center rounded bg-transparent border border-neutral-700 text-neutral-400 font-bold text-[12px] hover:border-[#ff0b0b] hover:text-[#ffdf00]">2</button>
+                <button className="w-8 h-8 flex items-center justify-center rounded bg-transparent border border-neutral-700 text-neutral-400 font-bold text-[12px] hover:border-[#ff0b0b] hover:text-[#ffdf00]">3</button>
+                <button className="w-8 h-8 flex items-center justify-center rounded bg-transparent border border-neutral-700 text-neutral-400 hover:border-[#ff0b0b] hover:text-[#ffdf00]">
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Marquee") && (
+            <motion.div key="marquee" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="flex gap-2 mb-2">
+                <div className="flex-1 flex items-center bg-[#141414] border border-neutral-700 rounded-full px-3 py-1.5 shadow-inner max-w-[200px]">
+                  <input type="text" placeholder="Search" className="bg-transparent border-none outline-none text-[11px] text-white w-full placeholder:text-neutral-500" />
+                  <Search className="w-3.5 h-3.5 text-[#ffdf00] shrink-0" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2.5">
+                {[
+                  { title: "8111c official website 【8111c.vip】 Collection ~ ..." },
+                  { title: "Welcome to 8111C.com - The Premier Online ..." }
+                ].map((item, i) => (
+                  <div key={i} className="bg-[#1c1c1c] rounded-lg py-4 px-3 flex items-center gap-3 border border-neutral-800 shadow-md cursor-pointer hover:border-[#ff0b0b] transition-colors group">
+                    <div className="shrink-0 pl-1">
+                       <span className="text-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all">🔊</span>
+                    </div>
+                    <div className="flex-1 flex flex-col justify-center">
+                      <h4 className="text-[12px] font-bold text-white truncate">{item.title}</h4>
+                    </div>
+                    <div className="flex items-center gap-1 shrink-0">
                       <ChevronRight className="w-4 h-4 text-neutral-500" />
                     </div>
                   </div>
