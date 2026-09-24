@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import toast from "react-hot-toast";
 import Link from "next/link";
 import { ChevronLeft, Grid, Handshake, Megaphone, Flame, UserPlus, Gamepad2, History, RefreshCw, Gift, X, PackageOpen, ChevronRight, Zap, Info, Play, ChevronDown, ChevronUp, Calendar, Trophy, Crown, CheckCircle2, Smartphone } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
@@ -627,14 +626,14 @@ export default function PromoPage() {
                   <span className="text-white font-bold text-[20px]">0.00</span>
                   <div className="relative mt-2">
                     <span className="absolute -top-3 -right-6 bg-[#cc0000] text-white text-[9px] font-bold px-1 rounded-sm shadow">+50%</span>
-                    <button onClick={() => toast.success("Redirecting to Deposit...")} className="bg-gradient-to-r from-[#ffdf00] to-[#ffaa00] text-[#4a2e00] font-bold text-[12px] px-6 py-1 rounded shadow-md">Deposit</button>
+                    <button className="bg-gradient-to-r from-[#ffdf00] to-[#ffaa00] text-[#4a2e00] font-bold text-[12px] px-6 py-1 rounded shadow-md">Deposit</button>
                   </div>
                 </div>
                 <div className="flex-1 flex flex-col items-center gap-1">
                   <span className="text-neutral-500 text-[12px]">Fund</span>
                   <span className="text-[#ffdf00] font-bold text-[20px]">0.00</span>
                   <div className="relative mt-2">
-                    <button onClick={() => toast.error("Balance too low for withdrawal")} className="bg-neutral-600 text-neutral-300 font-bold text-[12px] px-6 py-1 rounded shadow-md">Withdraw</button>
+                    <button className="bg-neutral-600 text-neutral-300 font-bold text-[12px] px-6 py-1 rounded shadow-md">Withdraw</button>
                   </div>
                 </div>
               </div>
@@ -740,6 +739,5 @@ function Banner({ title, desc, highlight, sub, icon, badge, href }: { title: str
   }
   return content;
 }
-
 
 
