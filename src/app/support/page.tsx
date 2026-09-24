@@ -114,9 +114,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
 
                     {/* Line 2 */}
@@ -132,9 +130,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
 
                     {/* Line 3 */}
@@ -150,9 +146,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
 
                     {/* Line 4 */}
@@ -168,9 +162,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
 
                     {/* Line 5 */}
@@ -186,9 +178,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
                   </>
                 )}
@@ -208,9 +198,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
 
                     {/* Line 2 */}
@@ -226,9 +214,7 @@ export default function SupportPage() {
                         </div>
                         <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
                       </div>
-                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                        Contact<br/>Now
-                      </button>
+                      <a href="https://t.me/Game8111c" target="_blank" rel="noopener noreferrer" className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform text-center block">Contact<br/>Now</a>
                     </div>
                   </>
                 )}
@@ -418,4 +404,5 @@ function HeadsetIcon(props: any) {
     </svg>
   );
 }
+
 

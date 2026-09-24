@@ -62,8 +62,9 @@ export default function PromoPage() {
         return (
           <>
             <Banner title="Redeem code" desc="Follow the 8111C channel" highlight="Earn 10~77777" icon="🎁" />
-            <Banner title="Official Channel" desc="Follow us on Telegram" sub="Stay updated on the latest deals" icon="✈️" badge="•" />
-            <Banner title="Official Channel" desc="Follow us on WhatsApp" sub="Stay updated on the latest deals" icon="💬" badge="•" />
+            <Banner title="Official Channel" desc="Follow us on Facebook" sub="Stay updated on the latest deals" icon="🌐" badge="•" href="https://www.facebook.com/share/1JzvPey4hQ/" />
+            <Banner title="Official Channel" desc="Follow us on Telegram" sub="Stay updated on the latest deals" icon="✈️" badge="•" href="https://t.me/Game8111c" />
+            <Banner title="Official Channel" desc="Follow us on WhatsApp" sub="Stay updated on the latest deals" icon="💬" badge="•" href="https://whatsapp.com/channel/0029VbDJdVw7j6gCK3T1YG0i" />
           </>
         );
       case "Popular":
@@ -713,8 +714,8 @@ export default function PromoPage() {
   );
 }
 
-function Banner({ title, desc, highlight, sub, icon, badge }: { title: string, desc: string, highlight?: string, sub?: string, icon: string, badge?: string }) {
-  return (
+function Banner({ title, desc, highlight, sub, icon, badge, href }: { title: string, desc: string, highlight?: string, sub?: string, icon: string, badge?: string, href?: string }) {
+  const content = (
     <div className="relative w-full rounded-xl overflow-hidden border border-[#ff0b0b] bg-gradient-to-br from-[#2e0505] via-[#111] to-[#1a1a1a] p-4 shadow-[0_0_15px_rgba(255,11,11,0.15)] flex flex-col justify-between min-h-[110px]">
       <div className="absolute top-0 left-0 bg-gradient-to-r from-[#ff0b0b] to-[#cc0000] px-3 py-0.5 rounded-br-lg flex items-center gap-1 shadow-md">
         <span className="text-white font-black italic text-[11px] tracking-wider">8111C.com</span>
@@ -732,6 +733,11 @@ function Banner({ title, desc, highlight, sub, icon, badge }: { title: string, d
       </div>
     </div>
   );
+
+  if (href) {
+    return <a href={href} target="_blank" rel="noopener noreferrer" className="block hover:scale-[1.02] transition-transform">{content}</a>;
+  }
+  return content;
 }
 
 
