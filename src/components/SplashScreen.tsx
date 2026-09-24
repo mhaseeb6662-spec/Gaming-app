@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Gamepad2 } from "lucide-react";
 
 export default function SplashScreen({ onComplete }: { onComplete: () => void }) {
@@ -24,14 +24,16 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
   }, [onComplete]);
 
   // Particle generation
-  const particles = Array.from({ length: 20 }).map((_, i) => ({
-    id: i,
-    x: Math.random() * 100,
-    y: Math.random() * 100,
-    size: Math.random() * 4 + 2,
-    delay: Math.random() * 2,
-    duration: Math.random() * 3 + 2,
-  }));
+  const particles = useMemo(() => {
+    return Array.from({ length: 20 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 4 + 2,
+      delay: Math.random() * 2,
+      duration: Math.random() * 3 + 2,
+    }));
+  }, []);
 
   return (
     <div className="relative w-full h-screen bg-black overflow-hidden flex flex-col items-center justify-center font-sans">
@@ -110,3 +112,4 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
     </div>
   );
 }
+
