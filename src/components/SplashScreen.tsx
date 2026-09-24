@@ -24,15 +24,18 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
   }, [onComplete]);
 
   // Particle generation
-  const particles = useMemo(() => {
-    return Array.from({ length: 20 }).map((_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 4 + 2,
-      delay: Math.random() * 2,
-      duration: Math.random() * 3 + 2,
-    }));
+  const [particles, setParticles] = useState<{id: number, x: number, y: number, size: number, delay: number, duration: number}[]>([]);
+  useEffect(() => {
+    setParticles(
+      Array.from({ length: 20 }).map((_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 2,
+        delay: Math.random() * 2,
+        duration: Math.random() * 3 + 2,
+      }))
+    );
   }, []);
 
   return (
