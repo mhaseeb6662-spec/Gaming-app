@@ -30,7 +30,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
 
           {/* Logo Header Inside Card */}
           <div className="pt-8 pb-3 flex justify-center items-center">
-            <img src="/splash-logo.png" alt="8111C" className="h-[36px] w-auto object-contain mix-blend-screen" />
+            <img src="/header-logo.jpg" alt="8111C" className="h-[44px] w-auto object-contain mix-blend-screen" />
           </div>
 
           <div className="px-5 pb-5 pt-1 text-center border-b border-neutral-800">
