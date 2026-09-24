@@ -612,11 +612,13 @@ export default function InvitePage() {
               </div>
             </motion.div>
           )}
+        </AnimatePresence>
       </div>
 
       <BottomNav activeTab="invite" />
     </main>
   );
 }
+
 
 
