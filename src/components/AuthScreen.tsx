@@ -26,42 +26,36 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
         <div className="bg-[#111111] rounded-[24px] border border-neutral-800 shadow-2xl overflow-hidden relative">
           
           {/* Subtle top glow */}
-          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#39ff14]/30 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-[#ff0b0b]/50 to-transparent" />
 
           {/* Logo Header Inside Card */}
-          <div className="pt-6 pb-2 flex justify-center items-center gap-1.5">
-            <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 15L4 4L9 11L12 3L15 11L20 4L22 15H2Z" />
-              <rect x="2" y="17" width="20" height="3" />
-            </svg>
-            <h1 className="text-3xl font-serif font-black tracking-tighter text-white flex items-center -mt-1">
-              JJwin
-            </h1>
+          <div className="pt-8 pb-3 flex justify-center items-center">
+            <img src="/splash-logo.png" alt="8111C" className="h-[36px] w-auto object-contain mix-blend-screen" />
           </div>
 
           <div className="px-5 pb-5 pt-1 text-center border-b border-neutral-800">
-            <p className="text-[13px] text-white/90">Invite friends to receive <span className="text-[#39ff14] font-bold">Rs 600</span> bonus</p>
-            <p className="text-[13px] text-white/90 mt-0.5">Download the app and receive <span className="text-[#39ff14] font-bold">Rs 888</span></p>
+            <p className="text-[13px] text-white/90">Invite friends to receive <span className="text-[#ffdf00] font-bold">Rs 600</span> bonus</p>
+            <p className="text-[13px] text-white/90 mt-0.5">Download the app and receive <span className="text-[#ffdf00] font-bold">Rs 888</span></p>
           </div>
 
           {/* Tabs */}
           <div className="flex border-b border-neutral-800">
             <button 
               onClick={() => setActiveTab("register")}
-              className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "register" ? "text-[#39ff14]" : "text-white"}`}
+              className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "register" ? "text-[#ffdf00]" : "text-white"}`}
             >
               Register
               {activeTab === "register" && (
-                <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2px] bg-[#39ff14]" />
+                <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2.5px] bg-[#ff0b0b]" />
               )}
             </button>
             <button 
               onClick={() => setActiveTab("login")}
-              className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "login" ? "text-[#39ff14]" : "text-white"}`}
+              className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "login" ? "text-[#ffdf00]" : "text-white"}`}
             >
               Login
               {activeTab === "login" && (
-                <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2px] bg-[#39ff14]" />
+                <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2.5px] bg-[#ff0b0b]" />
               )}
             </button>
           </div>
@@ -98,8 +92,8 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
 
               {/* Sub-tabs for Registration type */}
               <div className="flex gap-4">
-                <button className="flex items-center gap-1 text-[#39ff14] text-[11px] font-medium">
-                  <div className="w-3.5 h-3.5 rounded-full border border-[#39ff14] flex items-center justify-center">
+                <button className="flex items-center gap-1 text-[#ffdf00] text-[11px] font-medium">
+                  <div className="w-3.5 h-3.5 rounded-full border border-[#ffdf00] flex items-center justify-center">
                     <Lock className="w-2 h-2" />
                   </div>
                   Password registration
@@ -156,12 +150,12 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                     type="checkbox" 
                     checked={agreed}
                     onChange={(e) => setAgreed(e.target.checked)}
-                    className="appearance-none w-3.5 h-3.5 border border-neutral-600 rounded-sm bg-[#1a1a1a] checked:bg-[#39ff14] checked:border-[#39ff14] transition-colors" 
+                    className="appearance-none w-3.5 h-3.5 border border-neutral-600 rounded-sm bg-[#1a1a1a] checked:bg-[#ffdf00] checked:border-[#ffdf00] transition-colors" 
                   />
                   {agreed && <X className="w-2.5 h-2.5 text-black absolute pointer-events-none" style={{ clipPath: 'polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%)' }} />}
                 </div>
                 <span className="text-[10px] text-white/70 leading-tight">
-                  I am over 18 years old and have read and agreed to <span className="text-[#39ff14]">《User Agreement》</span>
+                  I am over 18 years old and have read and agreed to <span className="text-[#ffdf00]">《User Agreement》</span>
                 </span>
               </label>
 
@@ -173,7 +167,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                   10-666
                 </div>
                 
-                <button onClick={onLogin} className="w-full bg-[#39ff14] text-black font-bold text-[15px] py-2.5 rounded-lg shadow-[0_4px_15px_rgba(57,255,20,0.2)] transition-all active:scale-[0.98]">
+                <button onClick={onLogin} className="w-full bg-[#ffdf00] text-black font-bold text-[15px] py-2.5 rounded-lg shadow-[0_4px_15px_rgba(255,223,0,0.3)] transition-all active:scale-[0.98]">
                   {activeTab === "register" ? "Register" : "Login"}
                 </button>
               </div>
@@ -181,8 +175,8 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
 
             {/* Bottom Links */}
             <div className="flex justify-between mt-3 px-1">
-              <button className="text-[11px] text-[#39ff14]">Customer Service</button>
-              <button className="text-[11px] text-[#39ff14]">Demo</button>
+              <button className="text-[11px] text-[#ffdf00]">Customer Service</button>
+              <button className="text-[11px] text-[#ffdf00]">Demo</button>
             </div>
             
             <div className="relative flex py-4 items-center">
