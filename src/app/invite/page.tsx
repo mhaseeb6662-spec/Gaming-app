@@ -20,7 +20,13 @@ export default function InvitePage() {
         <Link href="/" className="absolute left-4">
           <ChevronLeft className="w-6 h-6 text-neutral-400" />
         </Link>
-        <h1 className="text-[17px] font-medium tracking-wide">Invite</h1>`n        {activeTab === "Commission Rate" && (`n          <button className="absolute right-4 text-[#ff0b0b] text-[10px] leading-tight text-right flex flex-col font-medium">`n            <span>Commission sim</span>`n            <span>ulation calculator</span>`n          </button>`n        )}
+        <h1 className="text-[17px] font-medium tracking-wide">Invite</h1>
+        {activeTab === "Commission Rate" && (
+          <button className="absolute right-4 text-[#ff0b0b] text-[10px] leading-tight text-right flex flex-col font-medium">
+            <span>Commission sim</span>
+            <span>ulation calculator</span>
+          </button>
+        )}
       </header>
 
       {/* Tabs Menu */}
@@ -612,4 +618,5 @@ export default function InvitePage() {
     </main>
   );
 }
+
 
