@@ -99,59 +99,139 @@ export default function SupportPage() {
               {/* Support Lines List */}
               <div className="flex flex-col bg-[#1c1c1c] mx-2 mt-2 rounded-xl border border-neutral-800 overflow-hidden shadow-lg">
                 
-                {/* Line 1 */}
-                <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
-                  <div className="w-10 h-10 rounded-full bg-[#1da1f2] flex items-center justify-center shrink-0 shadow-md">
-                    <HeadsetIcon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center">
-                    <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Customer Service Line</span></span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[13px] font-bold text-white">Customer Service Line</span>
-                      <span className="text-neutral-400 text-[12px]">📋</span>
+                {subTab === "Other Support" && (
+                  <>
+                    {/* Line 1 */}
+                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                      <div className="w-10 h-10 rounded-full bg-[#1da1f2] flex items-center justify-center shrink-0 shadow-md">
+                        <HeadsetIcon className="w-5 h-5 text-white" />
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Customer Service Line</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">Customer Service Line</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
                     </div>
-                    <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
-                  </div>
-                  <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                    Contact<br/>Now
-                  </button>
-                </div>
 
-                {/* Line 2 */}
-                <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
-                  <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shrink-0 shadow-md">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-6 h-6 invert" />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center">
-                    <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">WhatsApp</span></span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[13px] font-bold text-white">WhatsApp |Channel</span>
-                      <span className="text-neutral-400 text-[12px]">📋</span>
+                    {/* Line 2 */}
+                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                      <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shrink-0 shadow-md">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-6 h-6 invert" />
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">WhatsApp</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">WhatsApp |Channel</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
                     </div>
-                    <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
-                  </div>
-                  <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                    Contact<br/>Now
-                  </button>
-                </div>
 
-                {/* Line 3 */}
-                <div className="flex items-center gap-3 p-4">
-                  <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shrink-0 shadow-md">
-                    <span className="text-white font-bold text-xl font-serif">f</span>
-                  </div>
-                  <div className="flex-1 flex flex-col justify-center">
-                    <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Facebook</span></span>
-                    <div className="flex items-center gap-1">
-                      <span className="text-[13px] font-bold text-white">Facebook | Channel</span>
-                      <span className="text-neutral-400 text-[12px]">📋</span>
+                    {/* Line 3 */}
+                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                      <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center shrink-0 shadow-md">
+                        <span className="text-white font-bold text-xl font-serif">f</span>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Facebook</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">Facebook | Channel</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
                     </div>
-                    <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
-                  </div>
-                  <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
-                    Contact<br/>Now
-                  </button>
-                </div>
+
+                    {/* Line 4 */}
+                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 flex items-center justify-center shrink-0 shadow-md">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG" className="w-5 h-5 invert" />
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Instagram</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">Instagram | Channel</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
+                    </div>
+
+                    {/* Line 5 */}
+                    <div className="flex items-center gap-3 p-4">
+                      <div className="w-10 h-10 rounded-full bg-black border border-neutral-700 flex items-center justify-center shrink-0 shadow-md">
+                        <span className="text-white font-bold text-xl">??</span>
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Twitter</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">Twitter | Channel</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
+                    </div>
+                  </>
+                )}
+
+                {subTab === "Telegram Support" && (
+                  <>
+                    {/* Line 1 */}
+                    <div className="flex items-center gap-3 p-4 border-b border-neutral-800">
+                      <div className="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center shrink-0 shadow-md">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-10 h-10" />
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Online Customer Service</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">8111Capp</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
+                    </div>
+
+                    {/* Line 2 */}
+                    <div className="flex items-center gap-3 p-4">
+                      <div className="w-10 h-10 rounded-full bg-[#0088cc] flex items-center justify-center shrink-0 shadow-md">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-10 h-10" />
+                      </div>
+                      <div className="flex-1 flex flex-col justify-center">
+                        <span className="text-[11px] text-neutral-400 leading-tight">Nickname: <span className="text-white font-bold text-[13px]">Telegram</span></span>
+                        <div className="flex items-center gap-1">
+                          <span className="text-[13px] font-bold text-white">Telegram Channel</span>
+                          <span className="text-neutral-400 text-[12px]">??</span>
+                        </div>
+                        <span className="text-[10px] text-neutral-500">Online time: 00:00 - 23:59</span>
+                      </div>
+                      <button className="bg-[#cc0000] text-white font-bold text-[11px] py-1.5 px-3 rounded shadow-md hover:scale-95 transition-transform">
+                        Contact<br/>Now
+                      </button>
+                    </div>
+                  </>
+                )}
 
               </div>
 
@@ -338,3 +418,4 @@ function HeadsetIcon(props: any) {
     </svg>
   );
 }
+
