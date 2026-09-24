@@ -109,28 +109,62 @@ export default function PromoPage() {
   };
 
   const renderRebateList = () => {
-    const providers = activeRebateTab === "Mini Games" 
-      ? ["WG", "SPRIBE", "EVO", "IN", "JILI"]
-      : ["WG", "PG", "JILI", "JDB", "FC"];
+    let providers = [];
+    let cashback = "0.30%";
 
-    return providers.map((provider, idx) => (
-      <div key={idx} className="bg-[#1a1a1a] border border-neutral-800 rounded-lg p-3 flex flex-col gap-2 mb-2">
-        <div className="flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <span className="font-black italic text-[14px] text-white tracking-wider">{provider}</span>
-            <span className="text-neutral-400 text-[12px]">Valid Bets <span className="text-white font-bold">0.00</span></span>
+    switch (activeRebateTab) {
+      case "Mini Games":
+        providers = ["WG", "SPRIBE", "EVO", "IN", "JILI"];
+        cashback = "0.30%";
+        break;
+      case "Slot":
+        providers = ["WG", "PG", "JILI", "JDB", "FC"];
+        cashback = "0.30%";
+        break;
+      case "Fishing":
+        providers = ["JILI", "WG", "YB", "YGR", "JDB"];
+        cashback = "0.20%";
+        break;
+      case "Cards":
+        providers = ["WG", "JILI", "KM", "TP", "RTG"];
+        cashback = "0.20%";
+        break;
+      case "Live":
+        providers = ["EVO", "PLAY", "Ezugi", "SEXY", "AG"];
+        cashback = "0.05%";
+        break;
+      case "Sports":
+        providers = ["SBO", "WG", "SABA", "CMD", "IN"];
+        cashback = "0.05%";
+        break;
+      default:
+        providers = ["WG", "JILI"];
+        cashback = "0.10%";
+    }
+
+    return providers.map((provider, idx) => {
+      // Special case in Cards screenshot, one is 0.05%
+      const itemCashback = (activeRebateTab === "Cards" && provider === "KM") ? "0.05%" : cashback;
+      
+      return (
+        <div key={idx} className="bg-[#1a1a1a] border border-neutral-800 rounded-lg p-3 flex flex-col gap-2 mb-2">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <span className="font-black italic text-[14px] text-white tracking-wider">{provider}</span>
+              <span className="text-neutral-400 text-[12px]">Valid Bets <span className="text-white font-bold">0.00</span></span>
+            </div>
+            <ChevronRight className="w-4 h-4 text-neutral-500" />
           </div>
-          <ChevronRight className="w-4 h-4 text-neutral-500" />
+          <div className="w-full bg-[#333] rounded-full h-4 relative flex items-center justify-center overflow-hidden border border-[#444]">
+            <span className="text-[9px] font-bold text-white z-10 drop-shadow-md">Re-bet 100 to get {itemCashback} cashback</span>
+          </div>
+          <div className="flex justify-between items-center text-[11px]">
+            <span className="text-neutral-400">Rebate rate <span className="text-white font-bold">0.00%</span></span>
+            <span className="text-neutral-400">Collectable <span className="text-[#ffdf00] font-bold">0.00</span></span>
+          </div>
         </div>
-        <div className="w-full bg-[#333] rounded-full h-4 relative flex items-center justify-center overflow-hidden border border-[#444]">
-          <span className="text-[9px] font-bold text-white z-10 drop-shadow-md">Re-bet 100 to get 0.30% cashback</span>
-        </div>
-        <div className="flex justify-between items-center text-[11px]">
-          <span className="text-neutral-400">Rebate rate <span className="text-white font-bold">0.00%</span></span>
-          <span className="text-neutral-400">Collectable <span className="text-[#ffdf00] font-bold">0.00</span></span>
-        </div>
-      </div>
-    ));
+      );
+    });
   };
 
   return (
