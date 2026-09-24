@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function InvitePage() {
   const [activeTab, setActiveTab] = useState("Home");
-  const tabs = ["Home", "Promotion Sharing", "My Data", "Performance", "Commission", "Subordinate Information", "Subordinate Betting", "Subordinate Finance", "Subordinate claim"];
+  const tabs = ["Home", "Promotion Sharing", "My Data", "Performance", "Commission", "Subordinate Information", "Subordinate Betting", "Subordinate Finance", "Subordinate claim", "Commission Rate"];
   
   const [dateModalOpen, setDateModalOpen] = useState(false);
+  const [rateTab, setRateTab] = useState("Mini Games");
 
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white flex flex-col pb-24 font-sans overflow-x-hidden">
@@ -19,7 +20,7 @@ export default function InvitePage() {
         <Link href="/" className="absolute left-4">
           <ChevronLeft className="w-6 h-6 text-neutral-400" />
         </Link>
-        <h1 className="text-[17px] font-medium tracking-wide">Invite</h1>
+        <h1 className="text-[17px] font-medium tracking-wide">Invite</h1>`n        {activeTab === "Commission Rate" && (`n          <button className="absolute right-4 text-[#ff0b0b] text-[10px] leading-tight text-right flex flex-col font-medium">`n            <span>Commission sim</span>`n            <span>ulation calculator</span>`n          </button>`n        )}
       </header>
 
       {/* Tabs Menu */}
@@ -513,8 +514,96 @@ export default function InvitePage() {
           )}
 
           {(activeTab === "Subordinate claim") && (
-            <motion.div key="sub-claim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="p-10 flex justify-center text-neutral-500">
-              Content for Subordinate claim coming soon
+            <motion.div key="sub-claim" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col gap-3 pt-3 px-3 pb-8">
+              <div className="flex gap-2 mb-4">
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Today <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                  Total collection o... <ChevronLeft className="w-3 h-3 rotate-90" />
+                </button>
+                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                  Member ID
+                  <span className="text-[#ffdf00]">??</span>
+                </button>
+              </div>
+              <div className="flex-1 flex flex-col items-center justify-center pt-24 pb-40 gap-4 opacity-50">
+                <div className="w-24 h-24 bg-neutral-800 rounded-2xl flex items-center justify-center relative shadow-inner">
+                   <div className="absolute top-2 right-2 text-3xl opacity-20 -rotate-12">??</div>
+                   <div className="w-16 h-12 bg-neutral-700 rounded-lg border-t-2 border-neutral-600"></div>
+                </div>
+                <div className="flex items-center gap-2 text-neutral-500 text-[13px]">
+                  No content yet <span className="text-[#ffdf00]">?</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {(activeTab === "Commission Rate") && (
+            <motion.div key="commission-rate" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex gap-2 pt-3 px-2 pb-8 items-start">
+              {/* Left Sidebar (Vertical Tabs) */}
+              <div className="w-[85px] flex flex-col gap-2 shrink-0">
+                {[
+                  { id: "Mini Games", icon: "???" },
+                  { id: "Slot", icon: "??" },
+                  { id: "Fishing", icon: "??" },
+                  { id: "Cards", icon: "??" },
+                  { id: "Live", icon: "?????" },
+                  { id: "Sports", icon: "?" }
+                ].map(t => (
+                  <button 
+                    key={t.id}
+                    onClick={() => setRateTab(t.id)}
+                    className={`flex flex-col items-center justify-center py-3 rounded-lg border gap-1 transition-colors ${
+                      rateTab === t.id 
+                        ? "bg-[#cc0000] border-[#ff0b0b] text-white shadow-lg" 
+                        : "bg-[#141414] border-neutral-800 text-neutral-400"
+                    }`}
+                  >
+                    <span className="text-xl grayscale opacity-80">{t.icon}</span>
+                    <span className="text-[10px] font-medium leading-none text-center">{t.id}</span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Table Area */}
+              <div className="flex-1 bg-transparent flex flex-col rounded-xl overflow-hidden border border-neutral-800">
+                {/* Table Header */}
+                <div className="flex bg-[#1c1c1c] text-white text-[11px] font-bold py-3 px-2 border-b border-neutral-800">
+                  <div className="flex-1 flex flex-col items-center justify-center text-center leading-tight relative">
+                    Valid<br/>members
+                    <div className="absolute top-0 right-0 w-3.5 h-3.5 rounded-full bg-[#ff0b0b] text-[9px] flex items-center justify-center text-white">?</div>
+                  </div>
+                  <div className="flex-[1.5] text-center leading-tight flex flex-col items-center justify-center">
+                    Performance
+                    <span className="text-neutral-500 font-normal text-[9px] scale-90">(Unit: piece)</span>
+                  </div>
+                  <div className="flex-1 text-center leading-tight flex flex-col items-center justify-center">
+                    Commission<br/>Rate
+                  </div>
+                </div>
+
+                {/* Table Rows */}
+                <div className="flex flex-col text-[11px] font-bold text-center">
+                  {[
+                    { mem: 0, perf: "0.00", rate: "0.40%" },
+                    { mem: 0, perf: "10,000,000.00", rate: "0.50%" },
+                    { mem: 0, perf: "30,000,000.00", rate: "0.80%" },
+                    { mem: 0, perf: "50,000,000.00", rate: "1.00%" },
+                    { mem: 0, perf: "100,000,000.00", rate: "1.20%" },
+                    { mem: 0, perf: "300,000,000.00", rate: "1.50%" },
+                    { mem: 0, perf: "500,000,000.00", rate: "2.00%" },
+                    { mem: 0, perf: "1,000,000,000.00", rate: "2.50%" },
+                    { mem: 0, perf: "5,000,000,000.00", rate: "3.00%" }
+                  ].map((row, i) => (
+                    <div key={i} className={`flex py-3 px-1 ${i % 2 !== 0 ? "bg-[#141414]" : "bg-transparent"}`}>
+                      <div className="flex-1 text-white flex items-center justify-center">{row.mem}</div>
+                      <div className="flex-[1.5] text-white flex items-center justify-center">{row.perf}</div>
+                      <div className="flex-1 text-[#ffdf00] flex items-center justify-center">{row.rate}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           )}
       </div>
@@ -523,3 +612,4 @@ export default function InvitePage() {
     </main>
   );
 }
+
