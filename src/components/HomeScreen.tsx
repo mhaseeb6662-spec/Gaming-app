@@ -312,46 +312,47 @@ export default function HomeScreen() {
       </div>
 
       {/* Main Header (Pixel Perfect & Responsive) */}
-      <div className="w-full max-w-md mx-auto bg-[#0a0a0a] flex items-center justify-between px-3 sticky top-[50px] z-40 border-b border-neutral-900 min-h-[55px]">
-        <div className="flex items-center gap-2 shrink-0">
+      <div className="w-full max-w-md mx-auto bg-[#0a0a0a] flex items-center justify-between px-3 sticky top-[50px] z-40 border-b border-neutral-900 h-[60px]">
+        
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Custom Arrow Menu Icon */}
-          <button className="p-1 -ml-1 flex items-center justify-center text-neutral-300 shrink-0">
-            <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-               <line x1="4" y1="8" x2="12" y2="8"></line>
-               <line x1="4" y1="12" x2="17" y2="12"></line>
-               <polyline points="13 8.5 17 12 13 15.5"></polyline>
-               <line x1="4" y1="16" x2="12" y2="16"></line>
+          <button className="p-1 -ml-1 flex items-center justify-center text-[#aaaaaa] shrink-0 hover:text-white transition-colors">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7H14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M3 12H11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M3 17H14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              <path d="M14 6L20 12L14 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           
           {/* Custom King Logo */}
-          <div className="flex items-end shrink-0 -ml-1 relative">
-            {/* King face silhouette approximation */}
-            <svg className="w-8 h-9 shrink-0 absolute -top-4 -left-1 z-10" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
-              {/* Crown */}
-              <path d="M7 6L10 12L16 4L22 12L25 6L26 15H6L7 6Z" fill="white" stroke="white" strokeWidth="1" strokeLinejoin="round"/>
-              {/* Face profile facing left */}
-              <path d="M25 15H8C8 15 6 18 6 20C6 21 8 22 8 22C8 22 7 24 7 25C7 26 8 27 10 27C12 27 14 26 16 28C18 30 22 30 25 30V15Z" fill="white"/>
+          <div className="flex items-end shrink-0 relative pt-1">
+            
+            {/* King face silhouette exactly on top of J */}
+            <svg className="w-[18px] h-[19px] shrink-0 absolute -top-[6px] left-[3px] z-10" viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+              <path d="M2 0L8 8L16 0L24 8L30 0V12H2V0Z" fill="white" stroke="white" strokeWidth="1" strokeLinejoin="round"/>
+              <path d="M30 12H14C14 12 10 16 10 19C10 21 12 22 12 22C12 22 10 26 10 28C10 29 12 30 16 30C20 30 24 28 28 30C32 30 32 26 32 26V12Z" fill="white"/>
             </svg>
-            <div className="text-[28px] font-serif font-black tracking-tighter text-white flex items-end leading-none ml-4 relative z-0">
-              {/* First J with Spade cutout */}
-              <span className="relative">
+            
+            <div className="font-serif font-black tracking-tighter text-white flex items-baseline leading-none relative z-0" style={{ fontFamily: "Georgia, serif" }}>
+              {/* First J (Massive) with Spade cutout */}
+              <span className="relative inline-block text-[34px] mr-[1px]">
                 J
-                <span className="absolute left-[3px] bottom-[3px] text-[8px] text-[#0a0a0a]">♠</span>
+                <span className="absolute left-[3px] bottom-[5px] text-[10px] text-[#0a0a0a]">♠</span>
               </span>
-              Jwin
+              <span className="text-[26px] -ml-[3px]">Jwin</span>
             </div>
           </div>
         </div>
         
-        <div className="flex items-center gap-1.5 ml-auto shrink-0 mt-0.5">
-          <button className="bg-[#7ceb3d] text-black px-3.5 py-1.5 rounded-[10px] text-[13px] font-bold min-w-[55px] tracking-tight shrink-0">Login</button>
+        <div className="flex items-center gap-2 ml-auto shrink-0">
+          <button className="bg-[#7ceb3d] text-black px-4 py-1.5 rounded-[8px] text-[14px] font-medium min-w-[70px] tracking-tight shrink-0 shadow-sm hover:brightness-110 transition-all">Login</button>
           
           <div className="relative shrink-0">
-            <button className="bg-black border-[1.5px] border-[#7ceb3d] text-[#7ceb3d] px-3.5 py-1.5 rounded-[10px] text-[13px] font-bold min-w-[65px] tracking-tight shrink-0">Register</button>
+            <button className="bg-[#0a0a0a] border border-[#7ceb3d] text-[#7ceb3d] px-4 py-1.5 rounded-[8px] text-[14px] font-medium min-w-[75px] tracking-tight shrink-0 hover:bg-[#11260a] transition-colors">Register</button>
             
             {/* Tooltip hovering over right side */}
-            <div className="absolute -top-[16px] right-0 bg-[#00ff00] text-white text-[10px] font-bold px-1.5 py-0.5 rounded flex items-center justify-center z-10 whitespace-nowrap">
+            <div className="absolute -top-[15px] -right-[4px] bg-[#00ff00] text-white text-[10px] font-bold px-1.5 py-[2px] rounded flex items-center justify-center z-10 whitespace-nowrap shadow-md">
               10-666
               {/* Down arrow triangle aligned to right */}
               <div className="absolute -bottom-[3px] right-2 w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-[#00ff00]"></div>
