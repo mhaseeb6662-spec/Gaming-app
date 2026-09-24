@@ -397,13 +397,13 @@ export default function PromoPage() {
               {/* Times Tabs */}
               <div className="flex gap-4 justify-center mb-10">
                 <button onClick={() => setActiveSpinTimes(1)} className={`px-4 py-1.5 rounded-full text-[12px] font-bold border transition-all flex items-center gap-1.5 ${activeSpinTimes === 1 ? "bg-[#cc0000] border-[#ff0b0b] text-white shadow-[0_0_10px_rgba(255,11,11,0.3)]" : "bg-transparent border-neutral-600 text-neutral-400"}`}>
-                  {activeSpinTimes === 1 && <CheckCircle2, Smartphone className="w-3.5 h-3.5" />} 1 time
+                  {activeSpinTimes === 1 && <CheckCircle2 className="w-3.5 h-3.5" />} 1 time
                 </button>
                 <button onClick={() => setActiveSpinTimes(10)} className={`px-4 py-1.5 rounded-full text-[12px] font-bold border transition-all flex items-center gap-1.5 ${activeSpinTimes === 10 ? "bg-[#cc0000] border-[#ff0b0b] text-white shadow-[0_0_10px_rgba(255,11,11,0.3)]" : "bg-transparent border-neutral-600 text-neutral-400"}`}>
-                  {activeSpinTimes === 10 && <CheckCircle2, Smartphone className="w-3.5 h-3.5" />} 10 times
+                  {activeSpinTimes === 10 && <CheckCircle2 className="w-3.5 h-3.5" />} 10 times
                 </button>
                 <button onClick={() => setActiveSpinTimes(50)} className={`px-4 py-1.5 rounded-full text-[12px] font-bold border transition-all flex items-center gap-1.5 ${activeSpinTimes === 50 ? "bg-[#cc0000] border-[#ff0b0b] text-white shadow-[0_0_10px_rgba(255,11,11,0.3)]" : "bg-transparent border-neutral-600 text-neutral-400"}`}>
-                  {activeSpinTimes === 50 && <CheckCircle2, Smartphone className="w-3.5 h-3.5" />} 50 times
+                  {activeSpinTimes === 50 && <CheckCircle2 className="w-3.5 h-3.5" />} 50 times
                 </button>
               </div>
 
@@ -652,3 +652,4 @@ function Banner({ title, desc, highlight, sub, icon, badge }: { title: string, d
     </div>
   );
 }
+
