@@ -42,7 +42,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         transition={{ duration: 2 }}
         className="absolute inset-0 z-0"
       >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-green-500/20 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-600/20 rounded-full blur-[100px]" />
       </motion.div>
 
       {/* Floating particles */}
@@ -64,7 +64,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="absolute z-0 rounded-full bg-green-400 shadow-[0_0_10px_rgba(74,222,128,0.8)]"
+          className="absolute z-0 rounded-full bg-orange-500 shadow-[0_0_10px_rgba(255,165,0,0.8)]"
           style={{ width: p.size, height: p.size }}
         />
       ))}
@@ -96,7 +96,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
       >
         <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-green-500 shadow-[0_0_10px_rgba(74,222,128,1)]"
+            className="h-full bg-[#ff0b0b] shadow-[0_0_10px_rgba(255,11,11,1)]"
             style={{ width: `${progress}%` }}
             initial={{ width: "0%" }}
             animate={{ width: `${progress}%` }}

@@ -223,11 +223,11 @@ const heroBanners = [
     title: "Become an agent",
     subtitle: "Multiple agent\npromotion rebate offers",
     highlight: "Easily earn millions per month",
-    bg: "from-[#0a2e13] via-[#103a1a] to-[#1f4a22]",
-    border: "border-[#2a6a32]",
-    shadow: "shadow-[0_0_15px_rgba(57,255,20,0.15)]",
+    bg: "from-[#2e0a0a] via-[#1f0000] to-[#3a0a0a]",
+    border: "border-[#ff0b0b]",
+    shadow: "shadow-[0_0_15px_rgba(255,11,11,0.3)]",
     primaryText: "text-[#ffdf00]",
-    badgeBorder: "border-[#39ff14]",
+    badgeBorder: "border-[#ff0b0b]",
     highlightColor: "text-[#ffdf00]",
     emoji1: "🤵‍♂️", emoji2: "💰", emoji3: "🌍"
   },
@@ -235,36 +235,36 @@ const heroBanners = [
     title: "Welcome Bonus",
     subtitle: "New member\nfirst deposit 100% bonus",
     highlight: "Get up to Rs 8,888 free",
-    bg: "from-[#2e0a0a] via-[#3a1010] to-[#4a1f1f]",
-    border: "border-[#6a2a2a]",
-    shadow: "shadow-[0_0_15px_rgba(255,57,20,0.15)]",
-    primaryText: "text-[#ffb347]",
-    badgeBorder: "border-[#ff3914]",
-    highlightColor: "text-[#ffb347]",
+    bg: "from-[#3a0a0a] via-[#240000] to-[#4a1f1f]",
+    border: "border-[#ff0b0b]",
+    shadow: "shadow-[0_0_15px_rgba(255,11,11,0.3)]",
+    primaryText: "text-[#ffdf00]",
+    badgeBorder: "border-[#ff0b0b]",
+    highlightColor: "text-[#ffdf00]",
     emoji1: "🎁", emoji2: "💵", emoji3: "✨"
   },
   {
     title: "Daily Check-in",
     subtitle: "Log in every day\nto claim free rewards",
     highlight: "7 days streak for VIP box",
-    bg: "from-[#0a1b2e] via-[#10243a] to-[#1f384a]",
-    border: "border-[#2a4d6a]",
-    shadow: "shadow-[0_0_15px_rgba(20,157,255,0.15)]",
-    primaryText: "text-[#47b3ff]",
-    badgeBorder: "border-[#149dff]",
-    highlightColor: "text-[#47b3ff]",
+    bg: "from-[#1a0000] via-[#2a0505] to-[#330000]",
+    border: "border-[#ff0b0b]",
+    shadow: "shadow-[0_0_15px_rgba(255,11,11,0.3)]",
+    primaryText: "text-[#ffdf00]",
+    badgeBorder: "border-[#ff0b0b]",
+    highlightColor: "text-[#ffdf00]",
     emoji1: "📅", emoji2: "💎", emoji3: "🔥"
   },
   {
     title: "VIP Club",
     subtitle: "Upgrade VIP level\nunlock exclusive benefits",
     highlight: "Weekly salary & loss rebate",
-    bg: "from-[#220a2e] via-[#2d103a] to-[#3d1f4a]",
-    border: "border-[#572a6a]",
-    shadow: "shadow-[0_0_15px_rgba(200,20,255,0.15)]",
-    primaryText: "text-[#d147ff]",
-    badgeBorder: "border-[#c814ff]",
-    highlightColor: "text-[#d147ff]",
+    bg: "from-[#220000] via-[#330000] to-[#440000]",
+    border: "border-[#ff0b0b]",
+    shadow: "shadow-[0_0_15px_rgba(255,11,11,0.3)]",
+    primaryText: "text-[#ffdf00]",
+    badgeBorder: "border-[#ff0b0b]",
+    highlightColor: "text-[#ffdf00]",
     emoji1: "👑", emoji2: "⭐", emoji3: "🚀"
   }
 ];
@@ -287,7 +287,7 @@ export default function HomeScreen() {
         
         {/* Left Side: X, Logo, Text */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <button className="text-[#00ff00] p-1 -ml-1 hover:opacity-80 transition-opacity shrink-0">
+          <button className="text-[#ffdf00] p-1 -ml-1 hover:opacity-80 transition-opacity shrink-0">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           
@@ -296,12 +296,12 @@ export default function HomeScreen() {
           {/* Text ON ONE LINE */}
           <div className="truncate text-[13px] font-bold tracking-tight">
             <span className="text-white">Download app bonus </span>
-            <span className="text-[#00ff00]">Rs 888</span>
+            <span className="text-[#ffdf00]">Rs 888</span>
           </div>
         </div>
         
         {/* Right: Button */}
-        <button className="bg-[#008a27] text-white rounded-md font-bold text-[11px] leading-tight flex flex-col items-center justify-center h-[32px] px-3 shrink-0 ml-2">
+        <button className="bg-[#cc0000] hover:bg-[#ff0000] text-white rounded-md font-bold text-[11px] leading-tight flex flex-col items-center justify-center h-[32px] px-3 shrink-0 ml-2 transition-colors">
           <span>Download</span>
           <span>now</span>
         </button>
@@ -313,12 +313,11 @@ export default function HomeScreen() {
         
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Custom Arrow Menu Icon */}
-          <button className="p-1 -ml-1 flex items-center justify-center text-[#aaaaaa] shrink-0 hover:text-white transition-colors">
+          <button className="p-1 -ml-1 flex items-center justify-center text-[#ffdf00] shrink-0 hover:brightness-125 transition-colors">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 7H14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               <path d="M3 12H11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               <path d="M3 17H14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
-              <path d="M14 6L20 12L14 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
           
@@ -329,17 +328,19 @@ export default function HomeScreen() {
         </div>
         
         <div className="flex items-center gap-2 ml-auto shrink-0">
-          <button className="bg-[#7ceb3d] text-black px-4 py-1.5 rounded-[8px] text-[14px] font-medium min-w-[70px] tracking-tight shrink-0 shadow-sm hover:brightness-110 transition-all">Login</button>
+          <button className="bg-[#0a0a0a] border border-[#ffdf00] text-[#ffdf00] px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[70px] tracking-tight shrink-0 shadow-sm hover:bg-[#1f1b02] transition-colors flex items-center gap-1.5">
+            <User className="w-3.5 h-3.5" />
+            Login
+          </button>
           
           <div className="relative shrink-0">
-            <button className="bg-[#0a0a0a] border border-[#7ceb3d] text-[#7ceb3d] px-4 py-1.5 rounded-[8px] text-[14px] font-medium min-w-[75px] tracking-tight shrink-0 hover:bg-[#11260a] transition-colors">Register</button>
-            
-            {/* Tooltip hovering over right side */}
-            <div className="absolute -top-[15px] -right-[4px] bg-[#00ff00] text-white text-[10px] font-bold px-1.5 py-[2px] rounded flex items-center justify-center z-10 whitespace-nowrap shadow-md">
-              10-666
-              {/* Down arrow triangle aligned to right */}
-              <div className="absolute -bottom-[3px] right-2 w-0 h-0 border-l-[3px] border-r-[3px] border-t-[4px] border-l-transparent border-r-transparent border-t-[#00ff00]"></div>
-            </div>
+            <button className="bg-[#cc0000] text-white px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[80px] tracking-tight shrink-0 hover:bg-[#ff0000] transition-colors flex items-center justify-center gap-1.5">
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 8v6m3-3h-6"></path>
+              </svg>
+              Register
+            </button>
           </div>
         </div>
       </div>
@@ -349,15 +350,15 @@ export default function HomeScreen() {
         {/* Quick Links (Pixel Perfect) */}
         <div className="grid grid-cols-6 gap-2 px-3 mb-4 mt-1">
           {[
-            { name: "Invite", icon: <User className="w-6 h-6 text-[#39ff14]" /> },
-            { name: "VIP", icon: <Gem className="w-6 h-6 text-[#39ff14]" /> },
-            { name: "Receive", icon: <Gift className="w-6 h-6 text-[#39ff14]" /> },
-            { name: "Rebate", icon: <RefreshCcw className="w-6 h-6 text-[#39ff14]" /> },
-            { name: "Subsidy", icon: <CircleDollarSign className="w-6 h-6 text-[#39ff14]" /> },
-            { name: "Spins", icon: <Aperture className="w-6 h-6 text-[#39ff14]" /> },
+            { name: "Invite", icon: <User className="w-6 h-6 text-[#ffdf00]" /> },
+            { name: "VIP", icon: <Gem className="w-6 h-6 text-[#ffdf00]" /> },
+            { name: "Receive", icon: <Gift className="w-6 h-6 text-[#ffdf00]" /> },
+            { name: "Rebate", icon: <RefreshCcw className="w-6 h-6 text-[#ffdf00]" /> },
+            { name: "Subsidy", icon: <CircleDollarSign className="w-6 h-6 text-[#ffdf00]" /> },
+            { name: "Spins", icon: <Aperture className="w-6 h-6 text-[#ffdf00]" /> },
           ].map((item, i) => (
             <div key={i} className="flex flex-col items-center">
-              <div className="w-full aspect-square rounded-[10px] bg-gradient-to-b from-[#1a4a22] to-black border-t-[2px] border-t-[#39ff14] border-x border-b border-black flex items-center justify-center shadow-[0_0_12px_rgba(57,255,20,0.2)] mb-1">
+              <div className="w-full aspect-square rounded-[10px] bg-gradient-to-b from-[#2a0505] to-black border-t-[2px] border-t-[#ff0b0b] border-x border-b border-[#330000] flex items-center justify-center shadow-[0_0_12px_rgba(255,11,11,0.3)] mb-1">
                 {item.icon}
               </div>
               <span className="text-white text-[11px] font-bold">{item.name}</span>
@@ -468,10 +469,10 @@ export default function HomeScreen() {
 
         {/* Marquee Bar (Pixel Perfect) */}
         <div className="px-3 mb-6 flex items-center gap-2">
-          <Volume2 className="w-5 h-5 text-neutral-400 shrink-0" />
+          <Volume2 className="w-5 h-5 text-[#ff0b0b] shrink-0" />
           <div className="flex-1 overflow-hidden relative h-5 flex items-center border-r border-neutral-800">
              <p className="text-[#ffdf00] text-[13px] whitespace-nowrap absolute left-0 animate-marquee">
-               Welcome to JJwin.com - The Premier Online Gaming I...
+               Welcome to 8111C.com &nbsp;|&nbsp; Bigger Rewards &nbsp;|&nbsp; More Games &nbsp;|&nbsp; Play & Win!
              </p>
           </div>
           <div className="relative shrink-0 ml-1 mr-1">
@@ -546,15 +547,15 @@ export default function HomeScreen() {
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-lg group cursor-pointer border border-neutral-800`}
+                className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Top Bar */}
                 <div className="w-full flex justify-between items-start p-1.5 z-10 relative">
                   <div className="flex gap-1 items-center">
                     {game.hot && (
-                      <span className="text-[8px] bg-gradient-to-r from-red-600 to-orange-500 text-white font-black px-1 rounded-sm italic leading-tight shadow-md">HOT</span>
+                      <span className="text-[8px] bg-[#cc0000] text-white font-black px-1 rounded-sm italic leading-tight shadow-md">HOT</span>
                     )}
-                    <span className="text-[14px] font-black italic drop-shadow-md text-transparent bg-clip-text bg-gradient-to-b from-[#39ff14] to-[#00aaff]" style={{WebkitTextStroke: "0.5px white"}}>{game.logo}</span>
+                    <span className="text-[14px] font-black italic drop-shadow-md text-transparent bg-clip-text bg-gradient-to-b from-[#ffdf00] to-[#ffaa00]" style={{WebkitTextStroke: "0.5px white"}}>{game.logo}</span>
                   </div>
                   <div className="w-5 h-5 rounded-full bg-black/40 flex items-center justify-center backdrop-blur-sm border border-white/10 shadow-sm">
                     <svg className="w-3 h-3 text-neutral-300" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -566,25 +567,10 @@ export default function HomeScreen() {
                   {game.graphic}
                 </div>
                 
-                {/* Fake popups for specific games */}
-                {game.popups?.includes("coin") && (
-                  <div className="absolute top-1/2 left-0 w-12 h-12 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center shadow-lg border-2 border-yellow-200 -translate-x-2 z-20">
-                     <span className="text-[8px] font-bold text-red-700">Rs600</span>
-                  </div>
-                )}
-                {game.popups?.includes("wheel") && (
-                  <div className="absolute bottom-6 left-0 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-green-500 -translate-x-1 z-20">
-                     <div className="absolute bottom-0 w-full bg-[#39ff14] text-white text-[8px] font-bold text-center border-2 border-white rounded">Rs 500</div>
-                  </div>
-                )}
-                {game.name === "Crazy 777" && (
-                  <div className="absolute bottom-1 right-0 w-12 h-12 bg-[#1877f2] rounded flex items-center justify-center shadow-xl border border-blue-400 translate-x-1 z-20">
-                     <span className="text-white font-bold text-2xl">f</span>
-                     <div className="absolute -top-2 -right-2 w-5 h-5 bg-[#39ff14] rounded-full flex items-center justify-center shadow-md">
-                       <svg className="w-3 h-3 text-black" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
-                     </div>
-                  </div>
-                )}
+                {/* Free to claim pill (Matches Screenshot) */}
+                <div className="absolute bottom-7 w-[90%] left-[5%] bg-black border border-[#ffdf00] rounded-full py-0.5 text-center z-20 shadow-md">
+                   <span className="text-white text-[9px] font-bold">Free to claim <span className="text-[#ffdf00]">Rs 888</span></span>
+                </div>
 
                 {/* Bottom Name Plate */}
                 <div className="w-full bg-gradient-to-t from-black/90 via-black/50 to-transparent pt-6 pb-1.5 text-center mt-auto relative z-10">
@@ -1096,17 +1082,13 @@ export default function HomeScreen() {
         <Footer />
         
         {/* Floating TOP Button */}
-        <div className="fixed bottom-[85px] right-2 z-50 flex flex-col items-end pointer-events-auto group">
-          {/* Trophies overlapping */}
-          <div className="text-[24px] leading-none drop-shadow-xl translate-y-1 mr-2 relative z-10 flex transition-transform duration-300 group-hover:scale-110 group-hover:-translate-y-1">
-             <span className="-mr-2.5">🏆</span><span className="z-10 transform scale-110 -mr-2.5 mb-1">🏆</span><span className="">🏆</span>
-          </div>
-          {/* Top Button */}
-          <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-black/95 text-white px-3 py-1.5 rounded-full border border-neutral-700 flex items-center gap-1.5 shadow-[0_0_15px_rgba(0,0,0,0.8)] backdrop-blur-md relative z-0 transition-transform duration-300 group-hover:scale-110 group-hover:bg-neutral-900">
-             <div className="bg-[#39ff14] text-black w-4 h-4 rounded-full flex items-center justify-center shadow-sm">
-               <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" strokeWidth="4" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg>
-             </div>
-             <span className="text-[10px] font-black tracking-widest mt-[1px]">TOP</span>
+        <div className="fixed bottom-[85px] right-4 z-50 pointer-events-auto">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            className="w-11 h-11 bg-black/90 backdrop-blur-md rounded-full border-[1.5px] border-[#ffdf00] flex flex-col items-center justify-center text-[#ffdf00] shadow-[0_0_15px_rgba(255,223,0,0.2)] hover:bg-[#1a1700] transition-transform duration-300 hover:scale-110"
+          >
+             <svg className="w-4 h-4 -mb-0.5" fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg>
+             <span className="text-[10px] font-black tracking-widest uppercase mt-0.5">TOP</span>
           </button>
         </div>
       </div>
