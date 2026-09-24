@@ -81,9 +81,9 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         className="z-10 flex flex-col items-center relative w-[90%] max-w-sm"
       >
         <img 
-          src="/splash-logo.png" 
+          src="/aviator-splash.jpg" 
           alt="Premium Casino Game" 
-          className="w-full h-auto mix-blend-screen"
+          className="w-full h-auto rounded-3xl drop-shadow-[0_0_30px_rgba(255,165,0,0.5)] border border-orange-500/20"
         />
       </motion.div>
 
