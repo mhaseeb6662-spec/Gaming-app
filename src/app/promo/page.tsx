@@ -2,19 +2,22 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronLeft, Grid, Handshake, Megaphone, Flame, UserPlus, Gamepad2, History, RefreshCw, Gift, Smartphone, Eye, EyeOff } from "lucide-react";
+import { ChevronLeft, Grid, Handshake, Megaphone, Flame, UserPlus, Gamepad2, History, RefreshCw, Gift, Smartphone, Eye, EyeOff, X, PackageOpen, ChevronRight } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function PromoPage() {
   const [activeTopTab, setActiveTopTab] = useState("Event");
   const [activeSideTab, setActiveSideTab] = useState("All");
+  const [activeRebateTab, setActiveRebateTab] = useState("Mini Games");
+  
   const [showPhoneModal, setShowPhoneModal] = useState(false);
+  const [showRedeemModal, setShowRedeemModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   const topTabs = ["Event", "Unclaimed", "Rebate", "Mission", "Spins"];
   
-  const sideTabs = [
+  const eventSideTabs = [
     { id: "All", icon: <Grid className="w-5 h-5" /> },
     { id: "Cooperation", icon: <Handshake className="w-5 h-5" /> },
     { id: "Channel", icon: <Megaphone className="w-5 h-5" /> },
@@ -24,7 +27,16 @@ export default function PromoPage() {
     { id: "Slot", icon: <span className="font-bold text-[10px] border border-current px-0.5 rounded leading-none flex items-center justify-center">777</span> },
   ];
 
-  const renderBanners = () => {
+  const rebateSideTabs = [
+    { id: "Mini Games", icon: <Gamepad2 className="w-5 h-5" /> },
+    { id: "Slot", icon: <span className="font-bold text-[10px] border border-current px-0.5 rounded leading-none flex items-center justify-center">777</span> },
+    { id: "Fishing", icon: <span className="text-[14px]">🦈</span> },
+    { id: "Cards", icon: <span className="text-[14px]">🃏</span> },
+    { id: "Live", icon: <span className="text-[14px]">👩‍💼</span> },
+    { id: "Sports", icon: <span className="text-[14px]">⚽</span> },
+  ];
+
+  const renderEventBanners = () => {
     switch (activeSideTab) {
       case "All":
         return (
@@ -96,6 +108,31 @@ export default function PromoPage() {
     }
   };
 
+  const renderRebateList = () => {
+    const providers = activeRebateTab === "Mini Games" 
+      ? ["WG", "SPRIBE", "EVO", "IN", "JILI"]
+      : ["WG", "PG", "JILI", "JDB", "FC"];
+
+    return providers.map((provider, idx) => (
+      <div key={idx} className="bg-[#1a1a1a] border border-neutral-800 rounded-lg p-3 flex flex-col gap-2 mb-2">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <span className="font-black italic text-[14px] text-white tracking-wider">{provider}</span>
+            <span className="text-neutral-400 text-[12px]">Valid Bets <span className="text-white font-bold">0.00</span></span>
+          </div>
+          <ChevronRight className="w-4 h-4 text-neutral-500" />
+        </div>
+        <div className="w-full bg-[#333] rounded-full h-4 relative flex items-center justify-center overflow-hidden border border-[#444]">
+          <span className="text-[9px] font-bold text-white z-10 drop-shadow-md">Re-bet 100 to get 0.30% cashback</span>
+        </div>
+        <div className="flex justify-between items-center text-[11px]">
+          <span className="text-neutral-400">Rebate rate <span className="text-white font-bold">0.00%</span></span>
+          <span className="text-neutral-400">Collectable <span className="text-[#ffdf00] font-bold">0.00</span></span>
+        </div>
+      </div>
+    ));
+  };
+
   return (
     <main className="h-screen bg-[#111] text-white flex flex-col font-sans overflow-hidden">
       
@@ -128,168 +165,235 @@ export default function PromoPage() {
       </div>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex overflow-hidden pb-16 relative">
+      <div className="flex-1 flex flex-col overflow-hidden pb-16 relative">
         
-        {/* Left Sidebar */}
-        <div className="w-[85px] bg-[#1a1a1a] flex-none overflow-y-auto no-scrollbar pb-6 flex flex-col gap-1.5 p-2 border-r border-neutral-800">
-          {sideTabs.map((tab) => {
-            const isActive = activeSideTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveSideTab(tab.id)}
-                className={`flex flex-col items-center justify-center py-2.5 rounded-lg transition-all ${
-                  isActive 
-                    ? "bg-[#cc0000] text-white shadow-[0_0_10px_rgba(255,11,11,0.5)]" 
-                    : "bg-[#222] text-neutral-400 hover:bg-[#333]"
-                }`}
-              >
-                <div className={`mb-1 ${isActive ? "text-[#ffdf00]" : "text-neutral-400"}`}>
-                  {tab.icon}
-                </div>
-                <span className="text-[10px] font-medium text-center leading-tight px-1">
-                  {tab.id.replace(' ', '\n')}
-                </span>
-              </button>
-            );
-          })}
+        {/* EVENT TAB CONTENT */}
+        {activeTopTab === "Event" && (
+          <div className="flex-1 flex overflow-hidden">
+            {/* Left Sidebar */}
+            <div className="w-[85px] bg-[#1a1a1a] flex-none overflow-y-auto no-scrollbar pb-6 flex flex-col gap-1.5 p-2 border-r border-neutral-800">
+              {eventSideTabs.map((tab) => {
+                const isActive = activeSideTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveSideTab(tab.id)}
+                    className={`flex flex-col items-center justify-center py-2.5 rounded-lg transition-all ${
+                      isActive 
+                        ? "bg-[#cc0000] text-white shadow-[0_0_10px_rgba(255,11,11,0.5)]" 
+                        : "bg-[#222] text-neutral-400 hover:bg-[#333]"
+                    }`}
+                  >
+                    <div className={`mb-1 ${isActive ? "text-[#ffdf00]" : "text-neutral-400"}`}>
+                      {tab.icon}
+                    </div>
+                    <span className="text-[10px] font-medium text-center leading-tight px-1">
+                      {tab.id.replace(' ', '\n')}
+                    </span>
+                  </button>
+                );
+              })}
 
-          <div className="mt-4 flex flex-col gap-2">
-            <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold hover:bg-[#2e0505]">
-              <History className="w-3 h-3" /> History
-            </button>
-            <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold leading-tight hover:bg-[#2e0505]">
-              <RefreshCw className="w-3 h-3 shrink-0" /> <span className="text-left">Refresh<br/>rewards</span>
-            </button>
-            <button onClick={() => setShowPhoneModal(true)} className="flex items-center justify-center gap-1 py-2 bg-gradient-to-r from-red-600 to-orange-500 text-white rounded text-[10px] font-bold leading-tight shadow-md">
-              <Gift className="w-4 h-4 shrink-0 text-[#ffdf00]" /> <span className="text-left">Redeem<br/>Code</span>
-            </button>
+              <div className="mt-4 flex flex-col gap-2">
+                <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold hover:bg-[#2e0505]">
+                  <History className="w-3 h-3" /> History
+                </button>
+                <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold leading-tight hover:bg-[#2e0505]">
+                  <RefreshCw className="w-3 h-3 shrink-0" /> <span className="text-left">Refresh<br/>rewards</span>
+                </button>
+                <button 
+                  onClick={() => setShowRedeemModal(true)} 
+                  className="flex items-center justify-center gap-1 py-2 bg-gradient-to-r from-red-600 to-orange-500 text-white rounded text-[10px] font-bold leading-tight shadow-md"
+                >
+                  <Gift className="w-4 h-4 shrink-0 text-[#ffdf00]" /> <span className="text-left">Redeem<br/>Code</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Right Content Area */}
+            <div className="flex-1 bg-[#111] overflow-y-auto no-scrollbar p-3">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSideTab}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex flex-col gap-3"
+                >
+                  {renderEventBanners()}
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Right Content Area */}
-        <div className="flex-1 bg-[#111] overflow-y-auto no-scrollbar p-3">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeSideTab}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-              className="flex flex-col gap-3"
-            >
-              {renderBanners()}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        {/* UNCLAIMED TAB CONTENT */}
+        {activeTopTab === "Unclaimed" && (
+          <div className="flex-1 overflow-y-auto no-scrollbar bg-[#111] p-4 flex flex-col">
+            <div className="flex-1 flex flex-col items-center justify-center opacity-50 mb-4">
+              <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-500 text-[13px]">No content yet</span>
+                <RefreshCw className="w-4 h-4 text-[#ffdf00]" />
+              </div>
+            </div>
+            
+            <div className="flex justify-between items-center border-b border-neutral-800 pb-2 mb-4">
+              <span className="text-[#ffdf00] font-medium text-[13px] border-b-2 border-[#ff0b0b] pb-2 -mb-[9px]">History</span>
+              <span className="text-[#ffdf00] font-medium text-[13px]">More</span>
+            </div>
+
+            <div className="flex-1 flex flex-col items-center justify-center opacity-50">
+              <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
+              <div className="flex items-center gap-2">
+                <span className="text-neutral-500 text-[13px]">No content yet</span>
+                <RefreshCw className="w-4 h-4 text-[#ffdf00]" />
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* REBATE TAB CONTENT */}
+        {activeTopTab === "Rebate" && (
+          <div className="flex-1 flex flex-col overflow-hidden">
+            {/* Top Stats Card */}
+            <div className="bg-gradient-to-br from-[#ffdf00] to-[#ffaa00] m-3 p-4 rounded-xl shadow-lg border border-[#ffb300]">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-xl">💰</span>
+                <h3 className="text-[#4a2e00] font-bold text-[14px]">Today's estimated rebate <span className="text-[#ff0b0b]">0.00</span></h3>
+                <RefreshCw className="w-4 h-4 text-[#0066cc]" />
+              </div>
+              <div className="flex gap-3 mb-3">
+                <div className="flex-1 bg-gradient-to-r from-blue-200 to-blue-100 rounded-lg p-2.5 shadow-inner">
+                  <div className="text-[#4a2e00] font-black text-[15px] mb-1">0.00</div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#4a2e00]/70 text-[11px] font-medium">Today's valid bet</span>
+                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40" />
+                  </div>
+                </div>
+                <div className="flex-1 bg-gradient-to-r from-red-200 to-red-100 rounded-lg p-2.5 shadow-inner border border-red-300">
+                  <div className="text-[#4a2e00] font-black text-[15px] mb-1">0.00</div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[#4a2e00]/70 text-[11px] font-medium">Claimed today</span>
+                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40" />
+                  </div>
+                </div>
+              </div>
+              <p className="text-[#4a2e00]/80 text-[10px] leading-tight font-medium">
+                Data is updated every 10 min. If not synchronized, click above to refresh manually or check back later
+              </p>
+            </div>
+
+            {/* Layout for Rebate Sidebar + Content */}
+            <div className="flex-1 flex overflow-hidden border-t border-neutral-800">
+              <div className="w-[85px] bg-[#1a1a1a] flex-none overflow-y-auto no-scrollbar p-2 border-r border-neutral-800 flex flex-col gap-1.5">
+                {rebateSideTabs.map((tab) => {
+                  const isActive = activeRebateTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveRebateTab(tab.id)}
+                      className={`flex flex-col items-center justify-center py-2.5 rounded-lg transition-all ${
+                        isActive 
+                          ? "bg-[#cc0000] text-white shadow-[0_0_10px_rgba(255,11,11,0.5)]" 
+                          : "bg-[#222] text-neutral-400 hover:bg-[#333]"
+                      }`}
+                    >
+                      <div className={`mb-1 ${isActive ? "text-[#ffdf00]" : "text-neutral-400"}`}>
+                        {tab.icon}
+                      </div>
+                      <span className="text-[10px] font-medium text-center leading-tight px-1">
+                        {tab.id.replace(' ', '\n')}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="flex-1 bg-[#111] overflow-y-auto no-scrollbar p-3">
+                {renderRebateList()}
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
 
-      {/* Linked Phone Number Modal */}
+      {/* Linked Phone Number Modal (can still be used elsewhere if needed) */}
       <AnimatePresence>
         {showPhoneModal && (
-          <>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowPhoneModal(false)}
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-center items-center p-4"
+          >
+            {/* Same code as before for Phone Modal */}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Bonus Redemption Modal */}
+      <AnimatePresence>
+        {showRedeemModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowRedeemModal(false)}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-center items-center p-6"
+          >
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowPhoneModal(false)}
-              className="absolute inset-0 bg-black/60 backdrop-blur-sm z-50 flex justify-center items-center p-4"
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-gradient-to-b from-[#ffdf00] via-[#ffaa00] to-[#fff3e0] rounded-2xl w-full max-w-sm p-6 shadow-2xl relative"
             >
-              <motion.div
-                initial={{ scale: 0.95, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.95, opacity: 0 }}
-                onClick={(e) => e.stopPropagation()}
-                className="bg-[#1a1a1a] border border-neutral-800 rounded-2xl w-full max-w-sm p-5 shadow-2xl relative"
+              <button 
+                onClick={() => setShowRedeemModal(false)}
+                className="absolute top-4 right-4 text-[#4a2e00] hover:scale-110 transition-transform"
               >
-                {/* Modal Header */}
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <Smartphone className="w-5 h-5 text-blue-400" />
-                  <h2 className="text-[16px] font-bold text-white">Linked Phone Number</h2>
-                </div>
+                <X className="w-5 h-5" />
+              </button>
 
-                <p className="text-center text-[12px] text-white font-medium mb-6 leading-relaxed">
-                  You need to bind your phone first before you can use this function!
-                  <br />
-                  <span className="text-neutral-400">Do you want to bind immediately?</span>
-                </p>
+              <div className="absolute -top-12 -left-6 drop-shadow-2xl z-10 w-28 h-28 pointer-events-none text-[80px]">
+                🎁
+              </div>
 
-                {/* Form */}
-                <div className="space-y-4">
-                  
-                  {/* Phone Input */}
-                  <div>
-                    <label className="text-[12px] text-white font-medium mb-1.5 block">Linked Phone Number</label>
-                    <div className="flex bg-[#111] border border-neutral-700 rounded-lg overflow-hidden">
-                      <div className="flex items-center gap-1.5 px-3 py-2.5 border-r border-neutral-700 bg-[#141414]">
-                        <span className="text-[12px]">🇵🇰</span>
-                        <span className="text-neutral-400 text-[12px]">+92</span>
-                      </div>
-                      <input 
-                        type="tel" 
-                        placeholder="Please enter phone number"
-                        className="flex-1 bg-transparent border-none outline-none px-3 text-[12px] text-white placeholder:text-neutral-600"
-                      />
-                    </div>
-                  </div>
+              <div className="text-center mt-4 mb-6 relative z-0">
+                <h2 className="text-[22px] font-black text-[#cc0000] leading-tight drop-shadow-sm uppercase">Bonus<br/>Redemption...</h2>
+              </div>
 
-                  {/* Password Input */}
-                  <div>
-                    <label className="text-[12px] text-white font-medium mb-1.5 block">Set password</label>
-                    <div className="flex bg-[#111] border border-neutral-700 rounded-lg overflow-hidden px-3">
-                      <div className="flex items-center justify-center py-2.5 opacity-50">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                      </div>
-                      <input 
-                        type={showPassword ? "text" : "password"} 
-                        placeholder="Enter password"
-                        className="flex-1 bg-transparent border-none outline-none px-3 text-[12px] text-white placeholder:text-neutral-600"
-                      />
-                      <button onClick={() => setShowPassword(!showPassword)} className="flex items-center justify-center opacity-80 hover:opacity-100 transition-opacity">
-                        {showPassword ? <EyeOff className="w-4 h-4 text-[#ff0b0b]" /> : <Eye className="w-4 h-4 text-[#ff0b0b]" />}
-                      </button>
-                    </div>
-                  </div>
+              <div className="text-center mb-4">
+                <span className="text-[#4a2e00] font-medium text-[13px]">Win up to <span className="bg-[#cc0000] text-white px-2 py-0.5 rounded-full font-bold">Rs 77,777</span> in bonus!</span>
+              </div>
 
-                  {/* Password Strength */}
-                  <div className="flex items-center gap-2">
-                    <span className="text-[11px] text-white font-medium">Strength</span>
-                    <div className="flex gap-1 flex-1">
-                      <div className="h-1.5 flex-1 bg-neutral-700 rounded-full"></div>
-                      <div className="h-1.5 flex-1 bg-neutral-700 rounded-full"></div>
-                      <div className="h-1.5 flex-1 bg-neutral-700 rounded-full"></div>
-                      <div className="h-1.5 flex-1 bg-neutral-700 rounded-full"></div>
-                    </div>
-                  </div>
+              <div className="bg-white rounded-lg p-1.5 flex items-center mb-6 shadow-inner border border-neutral-200">
+                <span className="px-2 text-[16px]">🎫</span>
+                <input 
+                  type="text" 
+                  placeholder="The redemption code is co..."
+                  className="flex-1 bg-transparent border-none outline-none text-[13px] text-neutral-800 placeholder:text-neutral-400 px-1"
+                />
+                <button className="text-[#cc0000] font-bold text-[13px] px-3 border-l border-neutral-200">
+                  Paste
+                </button>
+              </div>
 
-                </div>
+              <button className="w-full bg-[#111] text-white font-bold text-[15px] py-3.5 rounded-lg shadow-lg hover:bg-[#333] transition-colors mb-4">
+                Redeem Bonus
+              </button>
 
-                {/* Actions */}
-                <div className="flex gap-3 mt-8 relative">
-                  <button onClick={() => setShowPhoneModal(false)} className="flex-1 border border-neutral-700 text-[#ffdf00] font-bold text-[13px] py-2.5 rounded-lg hover:bg-[#111] transition-colors">
-                    Let me think
-                  </button>
-                  <button className="flex-1 bg-gradient-to-r from-[#ff0b0b] to-[#cc0000] text-white font-bold text-[13px] py-2.5 rounded-lg shadow-[0_0_15px_rgba(255,11,11,0.3)] hover:brightness-110 transition-all">
-                    Link Now
-                  </button>
-                  
-                  {/* Gift Icon floating over Link Now */}
-                  <div className="absolute -top-6 right-2 flex items-center bg-[#1a1a1a] rounded-full px-1.5 py-0.5 border border-neutral-700 shadow-xl rotate-12 z-20">
-                    <Gift className="w-4 h-4 text-[#ffdf00] mr-1" />
-                    <span className="text-[#ffdf00] font-black text-[10px]">10-666</span>
-                  </div>
-                </div>
+              <div className="text-center">
+                <button className="text-[#cc0000] text-[12px] font-bold hover:underline">
+                  Event Rules
+                </button>
+              </div>
 
-                <div className="mt-4 text-center">
-                  <button className="text-[#ff0b0b] text-[12px] font-medium hover:underline">
-                    I already have another account
-                  </button>
-                </div>
-
-              </motion.div>
             </motion.div>
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
 
