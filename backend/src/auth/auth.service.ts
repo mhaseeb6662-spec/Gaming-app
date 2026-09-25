@@ -66,7 +66,9 @@ export class AuthService {
     const isMatch = await bcrypt.compare(dto.password, user.password_hash);
     if (!isMatch) throw new UnauthorizedException('Invalid credentials');
 
-    return this.generateTokens(user.id, user.role);
+    const tokens = await this.generateTokens(user.id, user.role);
+    const { password_hash, ...safeUser } = user;
+    return { ...tokens, user: safeUser };
   }
 
   async refreshToken(refreshToken: string) {
