@@ -7,7 +7,7 @@ type User = {
   phone?: string;
   email?: string;
   balance: number;
-  role: "USER" | "ADMIN";
+  role: "USER" | "ADMIN" | "SUPER_ADMIN";
 };
 
 type UserContextType = {
