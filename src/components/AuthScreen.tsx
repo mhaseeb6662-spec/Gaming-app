@@ -55,11 +55,11 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
             <img src="/header-logo.jpg" alt="8111C" className="h-[44px] w-auto object-contain mix-blend-screen" />
           </div>
           <div className="flex border-b border-neutral-800">
-            <button onClick={() => setActiveTab("register")} className={lex-1 py-3 text-[15px] font-medium transition-colors relative \}>
+            <button onClick={() => setActiveTab("register")} className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "register" ? "text-[#ffdf00]" : "text-white"}`}>
               Register
               {activeTab === "register" && <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2.5px] bg-[#ff0b0b]" />}
             </button>
-            <button onClick={() => setActiveTab("login")} className={lex-1 py-3 text-[15px] font-medium transition-colors relative \}>
+            <button onClick={() => setActiveTab("login")} className={`flex-1 py-3 text-[15px] font-medium transition-colors relative ${activeTab === "login" ? "text-[#ffdf00]" : "text-white"}`}>
               Login
               {activeTab === "login" && <motion.div layoutId="tab-indicator" className="absolute bottom-0 left-10 right-10 h-[2.5px] bg-[#ff0b0b]" />}
             </button>
