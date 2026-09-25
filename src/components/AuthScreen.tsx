@@ -144,6 +144,8 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                 </button>
               </div>
 
+              </>)}
+
               {/* Password Input */}
               <div className="flex items-center bg-[#0f0f0f] rounded-lg border border-neutral-800 transition-all overflow-hidden h-10 px-3">
                 <Lock className="w-3.5 h-3.5 text-neutral-500 mr-2 shrink-0" />
@@ -156,6 +158,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                 </button>
               </div>
 
+              {activeTab === "register" && (<>
               {/* Password Strength Indicator */}
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-white/80">Strength</span>
