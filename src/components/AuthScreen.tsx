@@ -40,7 +40,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
         alert("Registered successfully! Please login.");
         setActiveTab("login");
       }
-    } catch (e) {
+    } catch (e: any) {
       alert(e.message);
     } finally {
       setIsLoading(false);
@@ -259,3 +259,4 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
     </div>
   );
 }
+
