@@ -66,9 +66,11 @@ rm -f src/lib/prisma.ts
 npm run build
 
 cd backend
+mv ../package.json ../package.json.bak
 rm -rf node_modules
 rm -f package-lock.json
-npm install --ignore-scripts
+npm install
+mv ../package.json.bak ../package.json
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
 npm run build
