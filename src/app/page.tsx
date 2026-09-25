@@ -50,7 +50,7 @@ export default function Home() {
             className="w-full min-h-screen flex flex-col"
           >
             {/* Added home component dynamically */}
-            <HomeScreen />
+            <HomeScreen onLoginClick={() => setView("auth")} onRegisterClick={() => setView("auth")} />
           </motion.div>
         )}
       </AnimatePresence>

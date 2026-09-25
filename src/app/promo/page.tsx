@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import toast from "react-hot-toast";
 import Link from "next/link";
 import { ChevronLeft, Grid, Handshake, Megaphone, Flame, UserPlus, Gamepad2, History, RefreshCw, Gift, X, PackageOpen, ChevronRight, Zap, Info, Play, ChevronDown, ChevronUp, Calendar, Trophy, Crown, CheckCircle2, Smartphone } from "lucide-react";
 import BottomNav from "@/components/BottomNav";

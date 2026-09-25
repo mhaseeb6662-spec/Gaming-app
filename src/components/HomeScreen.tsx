@@ -269,8 +269,10 @@ const heroBanners = [
   }
 ];
 
-export default function HomeScreen() {
+import toast from "react-hot-toast";
+export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginClick?: () => void, onRegisterClick?: () => void }) {
   const [heroIndex, setHeroIndex] = useState(0);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -313,7 +315,7 @@ export default function HomeScreen() {
         
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {/* Custom Arrow Menu Icon */}
-          <button className="p-1 -ml-1 flex items-center justify-center text-[#ffdf00] shrink-0 hover:brightness-125 transition-colors">
+          <button onClick={() => setIsMenuOpen(true)} className="p-1 -ml-1 flex items-center justify-center text-[#ffdf00] shrink-0 hover:brightness-125 transition-colors">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3 7H14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
               <path d="M3 12H11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
@@ -328,13 +330,13 @@ export default function HomeScreen() {
         </div>
         
         <div className="flex items-center gap-2 ml-auto shrink-0">
-          <button className="bg-[#0a0a0a] border border-[#ffdf00] text-[#ffdf00] px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[70px] tracking-tight shrink-0 shadow-sm hover:bg-[#1f1b02] transition-colors flex items-center gap-1.5">
+          <button onClick={onLoginClick || (() => toast.success("Login coming soon"))} className="bg-[#0a0a0a] border border-[#ffdf00] text-[#ffdf00] px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[70px] tracking-tight shrink-0 shadow-sm hover:bg-[#1f1b02] transition-colors flex items-center gap-1.5">
             <User className="w-3.5 h-3.5" />
             Login
           </button>
           
           <div className="relative shrink-0">
-            <button className="bg-[#cc0000] text-white px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[80px] tracking-tight shrink-0 hover:bg-[#ff0000] transition-colors flex items-center justify-center gap-1.5">
+            <button onClick={onRegisterClick || (() => toast.success("Register coming soon"))} className="bg-[#cc0000] text-white px-3 py-1.5 rounded-[8px] text-[13px] font-medium min-w-[80px] tracking-tight shrink-0 hover:bg-[#ff0000] transition-colors flex items-center justify-center gap-1.5">
               <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 8v6m3-3h-6"></path>
@@ -1093,7 +1095,33 @@ export default function HomeScreen() {
         </div>
       </div>
       
-      <BottomNav />
+      
+      {/* Sidebar Overlay */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 z-[100] flex">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsMenuOpen(false)}></div>
+          <motion.div initial={{ x: -280 }} animate={{ x: 0 }} exit={{ x: -280 }} transition={{ type: "spring", damping: 25, stiffness: 200 }} className="relative w-[280px] h-full bg-[#111] border-r border-[#ffdf00]/30 shadow-2xl flex flex-col">
+            <div className="p-4 border-b border-neutral-800 flex justify-between items-center bg-[#0a0a0a]">
+              <img src="/header-logo.jpg" alt="8111C" className="h-[30px] mix-blend-screen" />
+              <button onClick={() => setIsMenuOpen(false)} className="text-neutral-400 hover:text-white">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+            </div>
+            <div className="p-4 flex-1 overflow-y-auto flex flex-col gap-2">
+              {["Home", "VIP Club", "Promotions", "My Profile", "Settings", "Customer Service"].map((item) => (
+                <button key={item} onClick={() => { setIsMenuOpen(false); toast.success("Going to " + item + "...") }} className="text-left px-4 py-3 text-[14px] text-white font-medium hover:bg-[#cc0000] rounded-lg transition-colors border border-transparent hover:border-[#ffdf00]">
+                  {item}
+                </button>
+              ))}
+            </div>
+            <div className="p-4 border-t border-neutral-800">
+              <button onClick={onLoginClick} className="w-full bg-[#ffdf00] text-black font-bold py-2 rounded-lg mb-2 hover:brightness-110">Login</button>
+              <button onClick={onRegisterClick} className="w-full bg-[#cc0000] text-white font-bold py-2 rounded-lg hover:brightness-110">Register</button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+<BottomNav />
     </div>
   );
 }
