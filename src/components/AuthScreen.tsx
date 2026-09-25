@@ -119,14 +119,10 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                   <img src="https://flagcdn.com/w20/pk.png" alt="PK" className="w-4 h-3 rounded-sm object-cover opacity-90" />
                   <span className="text-[13px] text-neutral-400">+92</span>
                 </div>
-                <input 
-                  type="text" 
-                  placeholder="*Please enter Phone number/Email/Profile" 
-                  className="flex-1 bg-transparent border-none outline-none px-3 text-[13px] text-white placeholder:text-neutral-600"
-                />
+                <input type="text" value={identifier} onChange={(e) => setIdentifier(e.target.value)} placeholder="*Please enter Phone number/Email/Profile" className="flex-1 bg-transparent border-none outline-none px-3 text-[13px] text-white placeholder:text-neutral-600" />
               </div>
 
-              {/* Sub-tabs for Registration type */}
+              {activeTab === "register" && (<>{activeTab === "register" && (<>{/* Sub-tabs for Registration type */}
               <div className="flex gap-4">
                 <button className="flex items-center gap-1 text-[#ffdf00] text-[11px] font-medium">
                   <div className="w-3.5 h-3.5 rounded-full border border-[#ffdf00] flex items-center justify-center">
@@ -142,7 +138,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                 </button>
               </div>
 
-              {/* Password Input */}
+              </>)}{/* Password Input */}
               <div className="flex items-center bg-[#0f0f0f] rounded-lg border border-neutral-800 transition-all overflow-hidden h-10 px-3">
                 <Lock className="w-3.5 h-3.5 text-neutral-500 mr-2 shrink-0" />
                 <input type={showPassword ? "text" : "password"} placeholder="*Enter password" value={password} onChange={(e) => setPassword(e.target.value)} className="flex-1 bg-transparent border-none outline-none text-[13px] text-white placeholder:text-neutral-600" />
@@ -151,7 +147,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                 </button>
               </div>
 
-              {/* Password Strength Indicator */}
+              {activeTab === "register" && (<>{/* Password Strength Indicator */}
               <div className="flex items-center gap-2">
                 <span className="text-[10px] text-white/80">Strength</span>
                 <div className="w-[100px] flex gap-1 h-1.5">
@@ -191,7 +187,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                 </span>
               </label>
 
-              {/* Register Button */}
+              </>)}{/* Register Button */}
               <div className="relative mt-2">
                 {/* Floating bonus tag */}
                 <div className="absolute -top-3 -right-2 bg-gradient-to-r from-[#ff0b0b] to-[#cc0000] text-white text-[10px] font-black px-1.5 py-0.5 rounded shadow-lg z-10 flex items-center gap-0.5 transform rotate-6 border border-white/20">
@@ -251,5 +247,9 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
     </div>
   );
 }
+
+
+
+
 
 
