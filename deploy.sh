@@ -67,6 +67,7 @@ npm run build
 
 cd backend
 rm -rf node_modules
+rm -f package-lock.json
 npm install
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
