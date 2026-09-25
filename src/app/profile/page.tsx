@@ -5,7 +5,9 @@ import toast from "react-hot-toast";
 import { ChevronRight, User, Gift, Wallet, CreditCard, Banknote, FileText, Settings, Shield, Search, Globe, HelpCircle, MessageSquare, Smartphone, Moon, Info } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 
+import { useUser } from '@/context/UserContext';
 export default function ProfilePage() {
+  const { user } = useUser();
   const menuItems = [
     { icon: <FileText className="w-5 h-5 text-[#ffdf00]" />, label: "My Records", subtext: "Details, records, reports, recover balance", highlight: true },
     { icon: <Settings className="w-5 h-5 text-[#ff0b0b]" />, label: "Manage withdrawal", subtext: "", highlight: false },
@@ -102,5 +104,6 @@ export default function ProfilePage() {
     </main>
   );
 }
+
 
 
