@@ -41,7 +41,7 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
 
       if (res.ok) {
         const data = await res.json();
-        setUser(data.user);
+        setUser(data);
       } else {
         localStorage.removeItem("token");
         setUser(null);
