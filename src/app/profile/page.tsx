@@ -49,7 +49,7 @@ export default function ProfilePage() {
             <button className="bg-transparent border border-[#ff0b0b] text-[#ffdf00] font-bold text-[12px] px-4 py-1.5 rounded hover:bg-[#2e0505] transition-colors">
               Register
             </button>
-          </div>
+          </div>}
         </div>
 
         {/* 3 Action Buttons */}
@@ -102,4 +102,5 @@ export default function ProfilePage() {
     </main>
   );
 }
+
 
