@@ -122,8 +122,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                   <span className="text-[13px] text-neutral-400">+92</span>
                 </div>
                 <input 
-                  type="text" 
-                  placeholder="*Please enter Phone number/Email/Profile" 
+                  type="text" value={identifier} onChange={(e) => setIdentifier(e.target.value)} placeholder="*Please enter Phone number/Email/Profile" 
                   className="flex-1 bg-transparent border-none outline-none px-3 text-[13px] text-white placeholder:text-neutral-600"
                 />
               </div>
@@ -149,8 +148,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
               <div className="flex items-center bg-[#0f0f0f] rounded-lg border border-neutral-800 transition-all overflow-hidden h-10 px-3">
                 <Lock className="w-3.5 h-3.5 text-neutral-500 mr-2 shrink-0" />
                 <input 
-                  type={showPassword ? "text" : "password"} 
-                  placeholder="*Enter password" 
+                  type={showPassword ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="*Enter password" 
                   className="flex-1 bg-transparent border-none outline-none text-[13px] text-white placeholder:text-neutral-600"
                 />
                 <button onClick={() => setShowPassword(!showPassword)} className="text-neutral-600 hover:text-neutral-400">
@@ -259,4 +257,5 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
     </div>
   );
 }
+
 
