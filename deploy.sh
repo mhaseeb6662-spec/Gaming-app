@@ -40,9 +40,11 @@ cd $REPO_DIR
 echo "[3/6] Setting up environment variables..."
 if [ ! -f ".env" ]; then
     cp .env.example .env
+    echo 'DATABASE_URL="postgresql://postgres.heklltkyyjihbazfiyfo:GamePlatform%402026@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"' >> .env
 fi
 if [ ! -f "backend/.env" ]; then
     cp backend/.env.example backend/.env
+    echo 'DATABASE_URL="postgresql://postgres.heklltkyyjihbazfiyfo:GamePlatform%402026@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"' >> backend/.env
 fi
 
 # 4. Build Frontend and Backend
