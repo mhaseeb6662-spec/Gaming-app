@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Eye, EyeOff, Gamepad2, ShieldCheck, Lock, Smartphone, Gift, X } from "lucide-react";
+import { useUser } from "@/context/UserContext";
 
 export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void, onClose?: () => void }) {
+  const { login } = useUser();
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);

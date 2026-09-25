@@ -270,9 +270,11 @@ const heroBanners = [
 ];
 
 import toast from "react-hot-toast";
+import { useUser } from "@/context/UserContext";
 export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginClick?: () => void, onRegisterClick?: () => void }) {
   const [heroIndex, setHeroIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, logout } = useUser();
 
   useEffect(() => {
     const timer = setInterval(() => {

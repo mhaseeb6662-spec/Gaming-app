@@ -7,13 +7,38 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  USER
+  ADMIN
+}
+
+enum TransactionType {
+  DEPOSIT
+  WITHDRAWAL
+  BET
+  WIN
+}
+
 model User {
   id        String   @id @default(cuid())
   email     String?  @unique
   phone     String?  @unique
   password  String
   balance   Float    @default(0)
+  role      Role     @default(USER)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  transactions Transaction[]
 }
 
+model Transaction {
+  id        String          @id @default(cuid())
+  userId    String
+  amount    Float
+  type      TransactionType
+  reference String?         // For external payment/game references
+  createdAt DateTime        @default(now())
+
+  user      User            @relation(fields: [userId], references: [id])
+}
