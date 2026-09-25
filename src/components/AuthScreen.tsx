@@ -35,7 +35,11 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
       
       if (isLogin) {
         login(data.access_token, data.user);
-        if (onLogin) onLogin();
+        if (data.user && (data.user.role === "SUPER_ADMIN" || data.user.role === "ADMIN")) {
+          window.location.href = "/admin";
+        } else {
+          if (onLogin) onLogin();
+        }
       } else {
         alert("Registered successfully! Please login.");
         setActiveTab("login");
