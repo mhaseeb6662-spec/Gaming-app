@@ -76,7 +76,7 @@ mv ../tsconfig.json.bak ../tsconfig.json
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
 find src -name "*.spec.ts" -type f -delete
-rm -rf test
+rm -rf test dist tsconfig.build.tsbuildinfo
 npm run build
 cd ..
 
