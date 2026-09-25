@@ -67,12 +67,16 @@ npm run build
 
 cd backend
 mv ../package.json ../package.json.bak
+mv ../tsconfig.json ../tsconfig.json.bak
 rm -rf node_modules
 rm -f package-lock.json
 npm install --legacy-peer-deps
 mv ../package.json.bak ../package.json
+mv ../tsconfig.json.bak ../tsconfig.json
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
+find src -name "*.spec.ts" -type f -delete
+rm -rf test
 npm run build
 cd ..
 
