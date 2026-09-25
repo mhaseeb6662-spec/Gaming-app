@@ -2,7 +2,6 @@
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "resolvePackageJsonExports": true,
     "esModuleInterop": true,
     "isolatedModules": true,
     "declaration": true,
@@ -19,7 +18,7 @@
     "strict": false,
     "strictNullChecks": false,
     "strictPropertyInitialization": false,
-    "types": ["vitest/globals", "node"]
+    "types": ["node"]
   }
 }
 
