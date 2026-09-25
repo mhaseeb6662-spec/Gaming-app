@@ -10,9 +10,9 @@ echo "[1/6] Installing necessary packages (Node, PM2, Nginx, Redis)..."
 sudo apt-get update
 sudo apt-get install -y curl dirmngr apt-transport-https lsb-release ca-certificates nginx redis-server
 
-# Install Node.js 20.x if not installed
+# Install Node.js 22.x if not installed
 if ! command -v node >/dev/null 2>&1; then
-    curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+    curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
     sudo apt-get install -y nodejs
 fi
 
@@ -69,7 +69,7 @@ cd backend
 mv ../package.json ../package.json.bak
 rm -rf node_modules
 rm -f package-lock.json
-npm install
+npm install --legacy-peer-deps
 mv ../package.json.bak ../package.json
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
