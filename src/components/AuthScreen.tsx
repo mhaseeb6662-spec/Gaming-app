@@ -9,8 +9,42 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
   const { login } = useUser();
   const [activeTab, setActiveTab] = useState<"register" | "login">("register");
   const [showPassword, setShowPassword] = useState(false);
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreed, setAgreed] = useState(true);
+  const handleSubmit = async () => {
+    if (!identifier || !password) return alert("Please enter credentials");
+    setIsLoading(true);
+    try {
+      const isLogin = activeTab === "login";
+      const endpoint = isLogin ? "/auth/login" : "/auth/register";
+      const payload = isLogin ? { identifier, password } : { email: identifier, password };
+      
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://169.58.50.184:4000/api/v1";
+      const res = await fetch(API_URL + endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.message || "Something went wrong");
+      
+      if (isLogin) {
+        login(data.access_token, data.user);
+        if (onLogin) onLogin();
+      } else {
+        alert("Registered successfully! Please login.");
+        setActiveTab("login");
+      }
+    } catch (e: any) {
+      alert(e.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="min-h-screen w-full bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 to-black text-white font-sans overflow-x-hidden pb-12 flex flex-col items-center">
@@ -111,11 +145,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
               {/* Password Input */}
               <div className="flex items-center bg-[#0f0f0f] rounded-lg border border-neutral-800 transition-all overflow-hidden h-10 px-3">
                 <Lock className="w-3.5 h-3.5 text-neutral-500 mr-2 shrink-0" />
-                <input 
-                  type={showPassword ? "text" : "password"} 
-                  placeholder="*Enter password" 
-                  className="flex-1 bg-transparent border-none outline-none text-[13px] text-white placeholder:text-neutral-600"
-                />
+                <input type={showPassword ? "text" : "password"} placeholder="*Enter password" value={password} onChange={(e) => setPassword(e.target.value)} className="flex-1 bg-transparent border-none outline-none text-[13px] text-white placeholder:text-neutral-600" />
                 <button onClick={() => setShowPassword(!showPassword)} className="text-neutral-600 hover:text-neutral-400">
                   <EyeOff className="w-4 h-4" />
                 </button>
@@ -169,7 +199,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
                   10-666
                 </div>
                 
-                <button onClick={onLogin} className="w-full bg-[#ffdf00] text-black font-bold text-[15px] py-2.5 rounded-lg shadow-[0_4px_15px_rgba(255,223,0,0.3)] transition-all active:scale-[0.98]">
+                <button onClick={handleSubmit} disabled={isLoading} className="w-full bg-[#ffdf00] text-black font-bold text-[15px] py-2.5 rounded-lg shadow-[0_4px_15px_rgba(255,223,0,0.3)] transition-all active:scale-[0.98] disabled:opacity-50">
                   {activeTab === "register" ? "Register" : "Login"}
                 </button>
               </div>
@@ -221,3 +251,5 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
     </div>
   );
 }
+
+
