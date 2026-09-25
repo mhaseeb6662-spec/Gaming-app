@@ -49,10 +49,12 @@ fi
 
 # 4. Build Frontend and Backend
 echo "[4/6] Installing dependencies and building..."
+rm -rf node_modules
 npm install
 npm run build
 
 cd backend
+rm -rf node_modules
 npm install
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
