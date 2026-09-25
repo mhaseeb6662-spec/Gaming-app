@@ -8,7 +8,9 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Security Headers
-  app.use(helmet());
+  app.use(helmet({
+    contentSecurityPolicy: false,
+  }));
 
   // CORS Configuration
   app.enableCors({
