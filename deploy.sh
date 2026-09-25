@@ -51,6 +51,8 @@ fi
 echo "[4/6] Installing dependencies and building..."
 rm -rf node_modules
 npm install
+mkdir -p prisma
+cp backend/prisma/schema.prisma prisma/schema.prisma
 npx prisma generate
 npm run build
 
