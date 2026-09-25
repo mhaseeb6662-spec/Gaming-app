@@ -68,7 +68,7 @@ npm run build
 cd backend
 rm -rf node_modules
 rm -f package-lock.json
-npm install
+npm install --ignore-scripts
 # Push Prisma schema (this connects to the live database)
 npx prisma generate
 npm run build
