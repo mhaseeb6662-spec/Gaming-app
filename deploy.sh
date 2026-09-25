@@ -31,6 +31,7 @@ if [ ! -d "$REPO_DIR" ]; then
 else
     echo "[2/6] Updating existing repository..."
     cd $REPO_DIR
+    git reset --hard
     git pull origin main
 fi
 
