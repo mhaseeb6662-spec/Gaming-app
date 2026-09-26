@@ -14,22 +14,23 @@ export class AdminFinancialsService {
 
   async getDeposits(page = 1, limit = 20, status?: FinancialStatus) {
     const skip = (page - 1) * limit;
-    const where = status ? { status } : {};
+    const where: any = { type: 'DEPOSIT' };
+    if (status) where.status = status;
     
     const [data, total] = await Promise.all([
-      this.prisma.deposit.findMany({ where, skip, take: limit, orderBy: { created_at: 'desc' }, include: { user: { select: { username: true, email: true } } } }),
-      this.prisma.deposit.count({ where }),
+      this.prisma.payment.findMany({ where, skip, take: limit, orderBy: { created_at: 'desc' }, include: { user: { select: { username: true, email: true } } } }),
+      this.prisma.payment.count({ where }),
     ]);
 
     return { data, meta: { total, page, limit, totalPages: Math.ceil(total / limit) } };
   }
 
   async processDeposit(adminId: string, depositId: string, action: 'approve' | 'reject') {
-    const deposit = await this.prisma.deposit.findUnique({ where: { id: depositId }, include: { user: true } });
+    const deposit = await this.prisma.payment.findUnique({ where: { id: depositId }, include: { user: true } });
     if (!deposit) throw new NotFoundException('Deposit not found');
     if (deposit.status !== 'PENDING') throw new BadRequestException(`Deposit is already ${deposit.status}`);
 
-    const newStatus = action === 'approve' ? 'APPROVED' : 'REJECTED';
+    const newStatus = action === 'approve' ? 'COMPLETED' : 'REJECTED'; // For Payment table, typically COMPLETED is used instead of APPROVED
     
     let transaction = null;
     if (action === 'approve') {
@@ -45,13 +46,13 @@ export class AdminFinancialsService {
       });
     }
 
-    const updated = await this.prisma.deposit.update({ where: { id: depositId }, data: { status: newStatus } });
+    const updated = await this.prisma.payment.update({ where: { id: depositId }, data: { status: newStatus } });
 
     await this.auditLogs.logAction({
       admin_id: adminId,
       user_id: deposit.user_id,
       action: `DEPOSIT_${newStatus}`,
-      entity: 'DEPOSIT',
+      entity: 'PAYMENT',
       entity_id: depositId,
       old_value: { status: 'PENDING' },
       new_value: { status: newStatus, transaction_id: transaction?.id }
@@ -62,18 +63,19 @@ export class AdminFinancialsService {
 
   async getWithdrawals(page = 1, limit = 20, status?: FinancialStatus) {
     const skip = (page - 1) * limit;
-    const where = status ? { status } : {};
+    const where: any = { type: 'WITHDRAWAL' };
+    if (status) where.status = status;
     
     const [data, total] = await Promise.all([
-      this.prisma.withdrawal.findMany({ where, skip, take: limit, orderBy: { created_at: 'desc' }, include: { user: { select: { username: true, email: true } } } }),
-      this.prisma.withdrawal.count({ where }),
+      this.prisma.payment.findMany({ where, skip, take: limit, orderBy: { created_at: 'desc' }, include: { user: { select: { username: true, email: true } } } }),
+      this.prisma.payment.count({ where }),
     ]);
 
     return { data, meta: { total, page, limit, totalPages: Math.ceil(total / limit) } };
   }
 
   async processWithdrawal(adminId: string, withdrawalId: string, action: 'approve' | 'reject' | 'complete') {
-    const withdrawal = await this.prisma.withdrawal.findUnique({ where: { id: withdrawalId } });
+    const withdrawal = await this.prisma.payment.findUnique({ where: { id: withdrawalId } });
     if (!withdrawal) throw new NotFoundException('Withdrawal not found');
 
     let newStatus: FinancialStatus;
@@ -83,9 +85,7 @@ export class AdminFinancialsService {
     } else if (action === 'reject') {
       if (withdrawal.status === 'COMPLETED') throw new BadRequestException('Cannot reject COMPLETED withdrawal');
       newStatus = 'REJECTED';
-      // If rejecting an already approved one, we might need to refund the locked balance. 
-      // Simplified: We assume PENDING -> REJECTED directly without locking, or the system locks on creation.
-      // If balance is deducted on creation, we refund it here. Let's assume deducted on creation.
+      
       const wallet = await this.prisma.wallet.findUnique({ where: { user_id: withdrawal.user_id } });
       await this.walletService.processTransaction({
         walletId: wallet.id,
@@ -99,13 +99,13 @@ export class AdminFinancialsService {
       newStatus = 'COMPLETED';
     }
 
-    const updated = await this.prisma.withdrawal.update({ where: { id: withdrawalId }, data: { status: newStatus } });
+    const updated = await this.prisma.payment.update({ where: { id: withdrawalId }, data: { status: newStatus } });
 
     await this.auditLogs.logAction({
       admin_id: adminId,
       user_id: withdrawal.user_id,
       action: `WITHDRAWAL_${newStatus}`,
-      entity: 'WITHDRAWAL',
+      entity: 'PAYMENT',
       entity_id: withdrawalId,
       old_value: { status: withdrawal.status },
       new_value: { status: newStatus }
