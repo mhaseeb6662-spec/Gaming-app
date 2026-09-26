@@ -5,8 +5,8 @@ import axios from 'axios';
 @Injectable()
 export class XpressPayProvider {
   private readonly logger = new Logger(XpressPayProvider.name);
-  private readonly appId = process.env.XPRESSPAY_APP_ID;
-  private readonly appSecret = process.env.XPRESSPAY_APP_SECRET;
+  private readonly appId = process.env.XPRESSPAY_APP_ID || 'mock-app-id';
+  private readonly appSecret = process.env.XPRESSPAY_APP_SECRET || 'mock-app-secret';
   private readonly apiUrl = 'https://xpresspay.cloud/api/v1'; // Standard endpoint assuming xpresspay.cloud from screenshot
 
   async initiateDeposit(amount: number, reference: string, metadata: any) {
