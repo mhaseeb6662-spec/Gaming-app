@@ -189,12 +189,8 @@ export default function PromoPage() {
                 );
               })}
               <div className="mt-4 flex flex-col gap-2">
-                <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold hover:bg-[#2e0505]">
-                  <History className="w-3 h-3" /> History
-                </button>
-                <button className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold leading-tight hover:bg-[#2e0505]">
-                  <RefreshCw className="w-3 h-3 shrink-0" /> <span className="text-left">Refresh<br/>rewards</span>
-                </button>
+                <button onClick={() => setActiveTopTab("History")} className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold hover:bg-[#2e0505]"><History className="w-3 h-3" /> History</button>
+                <button onClick={() => toast.success("Rewards refreshed")} className="flex items-center justify-center gap-1 py-1.5 border border-[#ff0b0b] text-[#ffdf00] rounded text-[10px] font-bold leading-tight hover:bg-[#2e0505]"><RefreshCw className="w-3 h-3 shrink-0" /> <span className="text-left">Refresh<br/>rewards</span></button>
                 <button onClick={() => setShowRedeemModal(true)} className="flex items-center justify-center gap-1 py-2 bg-gradient-to-r from-red-600 to-orange-500 text-white rounded text-[10px] font-bold leading-tight shadow-md">
                   <Gift className="w-4 h-4 shrink-0 text-[#ffdf00]" /> <span className="text-left">Redeem<br/>Code</span>
                 </button>
@@ -218,18 +214,18 @@ export default function PromoPage() {
               <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
               <div className="flex items-center gap-2">
                 <span className="text-neutral-500 text-[13px]">No content yet</span>
-                <RefreshCw className="w-4 h-4 text-[#ffdf00]" />
+                <RefreshCw onClick={() => toast.success("Refreshed")} className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
               </div>
             </div>
             <div className="flex justify-between items-center border-b border-neutral-800 pb-2 mb-4">
               <span className="text-[#ffdf00] font-medium text-[13px] border-b-2 border-[#ff0b0b] pb-2 -mb-[9px]">History</span>
-              <span className="text-[#ffdf00] font-medium text-[13px]">More</span>
+              <span onClick={() => toast("Loading more history...")} className="text-[#ffdf00] font-medium text-[13px] cursor-pointer">More</span>
             </div>
             <div className="flex-1 flex flex-col items-center justify-center opacity-50">
               <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
               <div className="flex items-center gap-2">
                 <span className="text-neutral-500 text-[13px]">No content yet</span>
-                <RefreshCw className="w-4 h-4 text-[#ffdf00]" />
+                <RefreshCw onClick={() => toast.success("Refreshed")} className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
               </div>
             </div>
           </div>
@@ -242,21 +238,21 @@ export default function PromoPage() {
               <div className="flex items-center gap-2 mb-3">
                 <span className="text-xl">💰</span>
                 <h3 className="text-[#4a2e00] font-bold text-[14px]">Today's estimated rebate <span className="text-[#cc0000]">0.00</span></h3>
-                <RefreshCw className="w-4 h-4 text-[#0066cc]" />
+                <RefreshCw onClick={() => toast.success("Rebate data synchronized")} className="w-4 h-4 text-[#0066cc] cursor-pointer" />
               </div>
               <div className="flex gap-3 mb-3">
                 <div className="flex-1 bg-gradient-to-r from-blue-200 to-blue-100 rounded-lg p-2.5 shadow-inner">
                   <div className="text-[#4a2e00] font-black text-[15px] mb-1">0.00</div>
                   <div className="flex justify-between items-center">
                     <span className="text-[#4a2e00]/70 text-[11px] font-medium">Today's valid bet</span>
-                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40" />
+                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40 cursor-pointer" onClick={() => toast("View details")} />
                   </div>
                 </div>
                 <div className="flex-1 bg-gradient-to-r from-red-200 to-red-100 rounded-lg p-2.5 shadow-inner border border-red-300">
                   <div className="text-[#4a2e00] font-black text-[15px] mb-1">0.00</div>
                   <div className="flex justify-between items-center">
                     <span className="text-[#4a2e00]/70 text-[11px] font-medium">Claimed today</span>
-                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40" />
+                    <ChevronRight className="w-3 h-3 text-[#4a2e00]/40 cursor-pointer" onClick={() => toast("View details")} />
                   </div>
                 </div>
               </div>
@@ -291,7 +287,7 @@ export default function PromoPage() {
                 <div className="flex items-center gap-1 text-[#ffdf00] font-bold text-[14px]">
                   <Zap className="w-4 h-4 fill-current" /> 0
                 </div>
-                <button className="text-[#ff0b0b] font-medium text-[13px]">Details</button>
+                <button onClick={() => toast("Loading details...")} className="text-[#ff0b0b] font-medium text-[13px]">Details</button>
               </div>
               
               {/* Progress Track */}
@@ -316,7 +312,7 @@ export default function PromoPage() {
               <button onClick={() => setActiveMissionTab("Daily Mission")} className={`px-4 py-1.5 rounded-full text-[12px] font-bold transition-colors ${activeMissionTab === "Daily Mission" ? "bg-[#cc0000] text-white" : "border border-neutral-700 text-neutral-400"}`}>Daily Mission</button>
               <button onClick={() => setActiveMissionTab("Weekly Mission")} className={`px-4 py-1.5 rounded-full text-[12px] font-bold transition-colors ${activeMissionTab === "Weekly Mission" ? "bg-[#cc0000] text-white" : "border border-neutral-700 text-neutral-400"}`}>Weekly Mission</button>
               <div className="flex-1 flex justify-end">
-                <button className="flex items-center gap-1 text-[#ff0b0b] text-[12px] font-medium"><RefreshCw className="w-3 h-3" /> Refresh</button>
+                <button onClick={() => toast.success("Missions refreshed")} className="flex items-center gap-1 text-[#ff0b0b] text-[12px] font-medium"><RefreshCw className="w-3 h-3" /> Refresh</button>
               </div>
             </div>
 
@@ -332,7 +328,7 @@ export default function PromoPage() {
                     <span className="w-6 h-6 rounded-full bg-[#ffdf00] text-[#111] font-bold text-[11px] flex items-center justify-center mb-1">Rs</span>
                     <span className="text-[#ffdf00] font-bold text-[12px] text-center leading-tight">10.00-666.0<br/>0</span>
                   </div>
-                  <button className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white font-bold px-8 py-2 rounded shadow-lg text-[13px] hover:brightness-110">Go</button>
+                  <button onClick={() => toast("Redirecting to mission...")} className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white font-bold px-8 py-2 rounded shadow-lg text-[13px] hover:brightness-110">Go</button>
                 </div>
               </div>
 
@@ -346,7 +342,7 @@ export default function PromoPage() {
                     <span className="w-6 h-6 rounded-full bg-[#ffdf00] text-[#111] font-bold text-[11px] flex items-center justify-center mb-1">Rs</span>
                     <span className="text-[#ffdf00] font-bold text-[12px] text-center leading-tight">66.00-666.0<br/>0</span>
                   </div>
-                  <button className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white font-bold px-8 py-2 rounded shadow-lg text-[13px] hover:brightness-110">Go</button>
+                  <button onClick={() => toast("Redirecting to mission...")} className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white font-bold px-8 py-2 rounded shadow-lg text-[13px] hover:brightness-110">Go</button>
                 </div>
               </div>
 
@@ -372,11 +368,11 @@ export default function PromoPage() {
                 <div className="flex items-center gap-2">
                   <span className="text-[#ffdf00] text-[20px] drop-shadow-md">⭐</span>
                   <span className="text-white font-bold text-[16px]">0</span>
-                  <RefreshCw className="w-4 h-4 text-[#ff0b0b]" />
+                  <RefreshCw onClick={() => toast.success("Lucky points updated")} className="w-4 h-4 text-[#ff0b0b] cursor-pointer" />
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="text-neutral-400 text-[11px]">Valid Bets <span className="text-white font-bold">1=1</span> Lucky point <Info className="w-3 h-3 inline text-[#ffdf00]" /></span>
-                  <button className="bg-gradient-to-r from-[#cc0000] to-[#ff0b0b] text-white font-bold text-[12px] px-4 py-1.5 rounded shadow-lg border border-red-500">GO</button>
+                  <button onClick={() => window.location.href="/deposit"} className="bg-gradient-to-r from-[#cc0000] to-[#ff0b0b] text-white font-bold text-[12px] px-4 py-1.5 rounded shadow-lg border border-red-500">GO</button>
                 </div>
               </div>
 
@@ -429,7 +425,7 @@ export default function PromoPage() {
                   </div>
                   
                   {/* Center Draw Button */}
-                  <div className="w-20 h-20 bg-gradient-to-br from-[#2e0505] to-[#111] rounded-full z-10 flex flex-col items-center justify-center border-4 border-[#ffdf00] shadow-[0_0_20px_rgba(255,223,0,0.5)] cursor-pointer hover:scale-105 transition-transform">
+                  <div onClick={() => toast.error("Insufficient lucky points to spin")} className="w-20 h-20 bg-gradient-to-br from-[#2e0505] to-[#111] rounded-full z-10 flex flex-col items-center justify-center border-4 border-[#ffdf00] shadow-[0_0_20px_rgba(255,223,0,0.5)] cursor-pointer hover:scale-105 transition-transform">
                     <span className="text-[#ffdf00] font-black text-[11px]">x0</span>
                     <span className="text-white font-bold text-[14px]">Draw</span>
                   </div>
@@ -520,7 +516,7 @@ export default function PromoPage() {
                             </div>
                             <span className="text-white text-[12px] font-medium">Weekly salary <span className="text-[#ffdf00] bg-[#4a2e00] px-1 rounded ml-1 font-bold">+25.00</span></span>
                           </div>
-                          <button className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
+                          <button onClick={() => window.location.href="/"} className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
                         </div>
                         
                         <div className="flex justify-between items-center">
@@ -531,7 +527,7 @@ export default function PromoPage() {
                             </div>
                             <span className="text-white text-[12px] font-medium">Monthly salary <span className="text-[#ffdf00] bg-[#4a2e00] px-1 rounded ml-1 font-bold">+50.00</span></span>
                           </div>
-                          <button className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
+                          <button onClick={() => window.location.href="/"} className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
                         </div>
 
                         <div className="flex justify-between items-center">
@@ -544,7 +540,7 @@ export default function PromoPage() {
                               <span className="text-neutral-500 text-[10px]">Bet for promotion <span className="text-neutral-400">50,000</span></span>
                             </div>
                           </div>
-                          <button className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
+                          <button onClick={() => window.location.href="/"} className="bg-gradient-to-b from-[#cc0000] to-[#ff0b0b] text-white text-[11px] font-bold px-4 py-1.5 rounded hover:brightness-110">Go to bet</button>
                         </div>
 
                         <div className="flex items-start gap-2 mt-2 pt-3 border-t border-neutral-800">
@@ -608,7 +604,7 @@ export default function PromoPage() {
             <div className="flex-1 flex flex-col items-center justify-center opacity-50 mb-4">
               <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
               <div className="flex items-center gap-2">
-                <span className="text-neutral-500 text-[13px]">Today No Records,but <span className="text-[#cc0000] font-medium">Read More</span></span>
+                <span className="text-neutral-500 text-[13px]">Today No Records,but <span onClick={() => toast("No more records")} className="text-[#cc0000] font-medium cursor-pointer">Read More</span></span>
               </div>
             </div>
           </div>
@@ -627,14 +623,14 @@ export default function PromoPage() {
                   <span className="text-white font-bold text-[20px]">0.00</span>
                   <div className="relative mt-2">
                     <span className="absolute -top-3 -right-6 bg-[#cc0000] text-white text-[9px] font-bold px-1 rounded-sm shadow">+50%</span>
-                    <button className="bg-gradient-to-r from-[#ffdf00] to-[#ffaa00] text-[#4a2e00] font-bold text-[12px] px-6 py-1 rounded shadow-md">Deposit</button>
+                    <button onClick={() => window.location.href="/deposit"} className="bg-gradient-to-r from-[#ffdf00] to-[#ffaa00] text-[#4a2e00] font-bold text-[12px] px-6 py-1 rounded shadow-md">Deposit</button>
                   </div>
                 </div>
                 <div className="flex-1 flex flex-col items-center gap-1">
                   <span className="text-neutral-500 text-[12px]">Fund</span>
                   <span className="text-[#ffdf00] font-bold text-[20px]">0.00</span>
                   <div className="relative mt-2">
-                    <button className="bg-neutral-600 text-neutral-300 font-bold text-[12px] px-6 py-1 rounded shadow-md">Withdraw</button>
+                    <button onClick={() => window.location.href="/withdraw"} className="bg-neutral-600 text-neutral-300 font-bold text-[12px] px-6 py-1 rounded shadow-md">Withdraw</button>
                   </div>
                 </div>
               </div>
@@ -664,7 +660,7 @@ export default function PromoPage() {
               <div className="flex flex-col items-center justify-center opacity-50 mt-10">
                 <PackageOpen className="w-20 h-20 text-neutral-600 mb-2" />
                 <div className="flex items-center gap-2">
-                  <span className="text-neutral-500 text-[13px]">Today No Records,but <span className="text-[#cc0000] font-medium">Read More</span></span>
+                  <span className="text-neutral-500 text-[13px]">Today No Records,but <span onClick={() => toast("No more records")} className="text-[#cc0000] font-medium cursor-pointer">Read More</span></span>
                 </div>
               </div>
             </div>
@@ -699,11 +695,11 @@ export default function PromoPage() {
               <div className="bg-white rounded-lg p-1.5 flex items-center mb-6 shadow-inner border border-neutral-200">
                 <span className="px-2 text-[16px]">🎫</span>
                 <input type="text" placeholder="The redemption code is co..." className="flex-1 bg-transparent border-none outline-none text-[13px] text-neutral-800 placeholder:text-neutral-400 px-1" />
-                <button className="text-[#cc0000] font-bold text-[13px] px-3 border-l border-neutral-200">Paste</button>
+                <button onClick={() => toast.success("Pasted from clipboard")} className="text-[#cc0000] font-bold text-[13px] px-3 border-l border-neutral-200">Paste</button>
               </div>
-              <button className="w-full bg-[#111] text-white font-bold text-[15px] py-3.5 rounded-lg shadow-lg hover:bg-[#333] transition-colors mb-4">Redeem Bonus</button>
+              <button onClick={() => toast.error("Invalid redeem code")} className="w-full bg-[#111] text-white font-bold text-[15px] py-3.5 rounded-lg shadow-lg hover:bg-[#333] transition-colors mb-4">Redeem Bonus</button>
               <div className="text-center">
-                <button className="text-[#cc0000] text-[12px] font-bold hover:underline">Event Rules</button>
+                <button onClick={() => toast("Opening rules...")} className="text-[#cc0000] text-[12px] font-bold hover:underline">Event Rules</button>
               </div>
             </motion.div>
           </motion.div>
