@@ -269,7 +269,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
       </motion.div>
       {showSuccessPopup && (
         <RegistrationSuccessPopup 
-          onClose={() => { setShowSuccessPopup(false); if (onLogin) onLogin(); }} 
+          onClose={() => { setShowSuccessPopup(false); setShowLuckyDrawPopup(true); }} 
           onNext={() => { setShowSuccessPopup(false); setShowLuckyDrawPopup(true); }} 
         />
       )}
