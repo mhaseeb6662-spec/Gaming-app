@@ -328,7 +328,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         
         {/* Left Side: X, Logo, Text */}
         <div className="flex items-center gap-2.5 min-w-0">
-          <button className="text-[#ffdf00] p-1 -ml-1 hover:opacity-80 transition-opacity shrink-0">
+          <button onClick={() => toast("Banner dismissed")} className="text-[#ffdf00] p-1 -ml-1 hover:opacity-80 transition-opacity shrink-0">
             <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
           </button>
           
@@ -342,7 +342,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         </div>
         
         {/* Right: Button */}
-        <button className="bg-[#cc0000] hover:bg-[#ff0000] text-white rounded-md font-bold text-[11px] leading-tight flex flex-col items-center justify-center h-[38px] px-3 shrink-0 ml-2 transition-colors">
+        <button onClick={() => toast.success("Downloading app...")} className="bg-[#cc0000] hover:bg-[#ff0000] text-white rounded-md font-bold text-[11px] leading-tight flex flex-col items-center justify-center h-[38px] px-3 shrink-0 ml-2 transition-colors">
           <span>Download</span>
           <span>now</span>
         </button>
@@ -377,7 +377,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                   ☪
                 </div>
                 <span className="text-[#ffdf00] font-bold text-[14px]">{user.balance || "0.00"}</span>
-                <button className="text-[#1fdf1f] hover:rotate-180 transition-transform duration-300 ml-0.5">
+                <button onClick={() => toast.success("Balance refreshed")} className="text-[#1fdf1f] hover:rotate-180 transition-transform duration-300 ml-0.5">
                   <RefreshCcw className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -442,7 +442,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             { name: "Subsidy", icon: <CircleDollarSign className="w-6 h-6 text-[#ffdf00]" /> },
             { name: "Spins", icon: <Aperture className="w-6 h-6 text-[#ffdf00]" /> },
           ].map((item, i) => (
-            <div key={i} className="flex flex-col items-center">
+            <div key={i} onClick={() => {
+    if (item.name === "Invite") window.location.href = "/invite";
+    else if (item.name === "Spins" || item.name === "Rebate") window.location.href = "/promo";
+    else toast.success(item.name + " opened");
+  }} className="flex flex-col items-center cursor-pointer hover:scale-105 transition-transform">
               <div className="w-full aspect-square rounded-[10px] bg-gradient-to-b from-[#2a0505] to-black border-t-[2px] border-t-[#ff0b0b] border-x border-b border-[#330000] flex items-center justify-center shadow-[0_0_12px_rgba(255,11,11,0.3)] mb-1">
                 {item.icon}
               </div>
@@ -452,7 +456,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         </div>
 
         {/* Main Banner (Animated Carousel) */}
-        <div className="px-3 mb-3 relative h-[140px]">
+        <div onClick={() => toast.success("Opening promotion...")} className="px-3 mb-3 relative h-[140px] cursor-pointer">
           <AnimatePresence mode="wait">
             <motion.div
               key={heroIndex}
@@ -572,7 +576,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         <div className="relative px-1 mb-8">
           {/* Left Arrow */}
           <div className="absolute left-1 top-1/2 -translate-y-1/2 z-10">
-            <button className="w-6 h-6 rounded-full bg-black/60 border border-neutral-700 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 shadow-md">
+            <button onClick={() => toast("Scrolling...")} className="w-6 h-6 rounded-full bg-black/60 border border-neutral-700 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 shadow-md">
               <ChevronLeft className="w-4 h-4 -ml-0.5" />
             </button>
           </div>
@@ -586,7 +590,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
               { name: "Live", icon: "👩‍💼" },
               { name: "Sports", icon: "⚽" },
             ].map((cat, i) => (
-              <div key={i} className="flex flex-col items-center opacity-70 hover:opacity-100 cursor-pointer transition-opacity">
+              <div key={i} onClick={() => toast.success(`Viewing ${cat.name} games`)} className="flex flex-col items-center opacity-70 hover:opacity-100 cursor-pointer transition-opacity">
                 <span className="text-[26px] mb-1 drop-shadow-md">{cat.icon}</span>
                 <span className="text-[12px] text-neutral-400 font-medium">{cat.name}</span>
               </div>
@@ -595,7 +599,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
 
           {/* Right Arrow */}
           <div className="absolute right-1 top-1/2 -translate-y-1/2 z-10">
-            <button className="w-6 h-6 rounded-full bg-black/60 border border-neutral-700 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 shadow-md">
+            <button onClick={() => toast("Scrolling...")} className="w-6 h-6 rounded-full bg-black/60 border border-neutral-700 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/80 shadow-md">
               <ChevronRight className="w-4 h-4 -mr-0.5" />
             </button>
           </div>
@@ -613,13 +617,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -687,13 +691,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -747,13 +751,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -830,13 +834,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -883,13 +887,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -956,13 +960,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -1016,13 +1020,13 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
             
             {/* Pill Navigation: <- | All | -> */}
             <div className="flex items-center text-[11px] text-white font-bold bg-[#141414] border border-neutral-800 rounded-full overflow-hidden h-7 shadow-sm">
-              <button className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Previous page")} className="px-3 h-full hover:bg-neutral-800 border-r border-neutral-800 flex items-center justify-center">
                 <ChevronLeft className="w-3.5 h-3.5 text-neutral-400" />
               </button>
-              <div className="px-4 h-full flex items-center justify-center">
+              <div onClick={() => toast.success("Viewing All")} className="px-4 h-full flex items-center justify-center cursor-pointer hover:text-[#ffdf00]">
                 All
               </div>
-              <button className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
+              <button onClick={() => toast("Next page")} className="px-3 h-full hover:bg-neutral-800 border-l border-neutral-800 flex items-center justify-center">
                 <ArrowRight className="w-3.5 h-3.5 text-white" />
               </button>
             </div>
@@ -1145,7 +1149,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         <div className="fixed top-[45%] left-1 -translate-y-1/2 z-50 flex flex-col items-start pointer-events-none">
           
           {/* Top Coin Popup */}
-          <div className="relative mb-3 pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
+          <div onClick={() => toast.success("Claimed bonus!")} className="relative mb-3 pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
             {/* Green arrow indicator */}
             <div className="absolute -left-1 z-20 w-4 h-4 bg-[#ffdf00] rounded-full flex items-center justify-center shadow-md">
                <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" strokeWidth="4" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
@@ -1160,7 +1164,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
           </div>
           
           {/* Bottom Wheel Popup */}
-          <div className="relative pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
+          <div onClick={() => toast.success("Opening lucky wheel!")} className="relative pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:translate-x-1">
             <div className="w-[48px] h-[48px] bg-white rounded-full flex items-center justify-center shadow-xl border-[2.5px] border-[#ffdf00] relative z-10">
                <div className="absolute -top-1.5 right-0 w-3.5 h-3.5 bg-black rounded-full flex items-center justify-center shadow-lg border border-neutral-700 group-hover:bg-neutral-800 transition-colors z-30">
                  <span className="text-white text-[7px] font-bold">x</span>
@@ -1181,7 +1185,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
         <div className="fixed top-[35%] sm:top-[40%] right-1 -translate-y-1/2 z-50 flex flex-col items-end pointer-events-none">
           
           {/* Deposit Rewards Popup */}
-          <div className="relative pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:-translate-x-1">
+          <div onClick={() => toast.success("Viewing deposit rewards!")} className="relative pointer-events-auto cursor-pointer group flex items-center transition-transform duration-300 ease-out hover:scale-110 hover:-translate-x-1">
             <div className="flex flex-col items-center bg-black/95 p-1.5 rounded-xl border border-yellow-400/80 shadow-[0_0_12px_rgba(255,200,0,0.2)] relative z-10 w-[50px]">
               <div className="absolute top-0 right-1 w-3.5 h-3.5 bg-neutral-900 rounded-full flex items-center justify-center shadow-lg z-30 border border-neutral-700 group-hover:bg-neutral-800 transition-colors">
                  <span className="text-white text-[7px] font-bold">x</span>
