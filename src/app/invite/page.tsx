@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import toast from "react-hot-toast";
 import { ChevronLeft, Share, Copy, Calendar } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import { motion, AnimatePresence } from "framer-motion";
@@ -22,7 +23,7 @@ export default function InvitePage() {
         </Link>
         <h1 className="text-[17px] font-medium tracking-wide">Invite</h1>
         {activeTab === "Commission Rate" && (
-          <button className="absolute right-4 text-[#ff0b0b] text-[10px] leading-tight text-right flex flex-col font-medium">
+          <button onClick={() => toast("Simulation calculator coming soon")} className="absolute right-4 text-[#ff0b0b] text-[10px] leading-tight text-right flex flex-col font-medium">
             <span>Commission sim</span>
             <span>ulation calculator</span>
           </button>
@@ -127,7 +128,7 @@ export default function InvitePage() {
                     <div className="bg-white p-1 rounded-lg aspect-square flex items-center justify-center">
                       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://8111C.com" alt="QR" className="w-full h-full" />
                     </div>
-                    <button className="w-full bg-[#cc0000] text-white text-[10px] font-bold py-1.5 rounded text-center leading-tight shadow-md hover:bg-[#ff0b0b]">
+                    <button onClick={() => toast.success("Invitation saved to gallery!")} className="w-full bg-[#cc0000] text-white text-[10px] font-bold py-1.5 rounded text-center leading-tight shadow-md hover:bg-[#ff0b0b]">
                       Save<br/>invitation...
                     </button>
                   </div>
@@ -137,25 +138,25 @@ export default function InvitePage() {
                     <div className="flex items-center bg-[#111111] border border-neutral-700 rounded-lg p-2 h-9 shadow-inner">
                       <span className="flex-1 text-[11px] text-neutral-400 truncate">https://8111C.com/invite</span>
                       <div className="h-4 w-[1px] bg-neutral-700 mx-2"></div>
-                      <Copy className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
+                      <Copy onClick={() => { navigator.clipboard.writeText("https://8111C.com/invite"); toast.success("Link copied!"); }} className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
                     </div>
                     
                     <div className="flex justify-between items-center mt-3 px-1">
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => navigator.share ? navigator.share({title: "Join 8111C", url: "https://8111C.com/invite"}) : toast.success("Opening share dialog...")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <div className="w-9 h-9 rounded-full border border-neutral-700 flex items-center justify-center text-[#ffdf00]">
                           <Share className="w-4 h-4" />
                         </div>
                         <span className="text-[9px] text-neutral-400">Share</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://wa.me/?text=Join%20me%20on%208111C!%20https://8111C.com/invite", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-9 h-9" />
                         <span className="text-[9px] text-neutral-400">WhatsApp</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://t.me/share/url?url=https://8111C.com/invite&text=Join%20me!", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-9 h-9" />
                         <span className="text-[9px] text-neutral-400">Telegram</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://www.facebook.com/sharer/sharer.php?u=https://8111C.com/invite", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB" className="w-9 h-9" />
                         <span className="text-[9px] text-neutral-400">Facebook</span>
                       </div>
@@ -166,7 +167,7 @@ export default function InvitePage() {
 
               {/* Commission Rate Button */}
               <div className="px-3 mt-1">
-                <button className="w-full bg-gradient-to-r from-[#ffaa00] to-[#ffdf00] text-[#4a2e00] font-black text-[15px] py-4 rounded-xl flex items-center justify-between px-4 shadow-[0_4px_15px_rgba(255,223,0,0.3)] hover:scale-[0.98] transition-transform">
+                <button onClick={() => setActiveTab("Commission Rate")} className="w-full bg-gradient-to-r from-[#ffaa00] to-[#ffdf00] text-[#4a2e00] font-black text-[15px] py-4 rounded-xl flex items-center justify-between px-4 shadow-[0_4px_15px_rgba(255,223,0,0.3)] hover:scale-[0.98] transition-transform">
                   <div className="flex items-center gap-2">
                     <span className="text-[20px]">🪙</span>
                     Commission Rate
@@ -186,7 +187,7 @@ export default function InvitePage() {
                     <div className="bg-white p-1 rounded-lg aspect-square flex items-center justify-center">
                       <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://8111C.com" alt="QR" className="w-full h-full" />
                     </div>
-                    <button className="w-full bg-[#cc0000] text-white text-[9px] font-bold py-1.5 rounded text-center leading-tight shadow-md">
+                    <button onClick={() => toast.success("Invitation saved to gallery!")} className="w-full bg-[#cc0000] text-white text-[9px] font-bold py-1.5 rounded text-center leading-tight shadow-md hover:bg-[#ff0b0b]">
                       Save<br/>invitation...
                     </button>
                   </div>
@@ -194,22 +195,22 @@ export default function InvitePage() {
                     <div className="flex items-center bg-[#111111] border border-neutral-700 rounded-lg p-2 h-9 shadow-inner">
                       <span className="flex-1 text-[11px] text-neutral-400 truncate">https://8111C.com/invite</span>
                       <div className="h-4 w-[1px] bg-neutral-700 mx-2"></div>
-                      <Copy className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
+                      <Copy onClick={() => { navigator.clipboard.writeText("https://8111C.com/invite"); toast.success("Link copied!"); }} className="w-4 h-4 text-[#ffdf00] cursor-pointer" />
                     </div>
                     <div className="flex justify-between items-center mt-3 px-1">
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => navigator.share ? navigator.share({title: "Join 8111C", url: "https://8111C.com/invite"}) : toast.success("Opening share dialog...")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <div className="w-8 h-8 rounded-full border border-neutral-700 flex items-center justify-center text-[#ffdf00]"><Share className="w-3.5 h-3.5" /></div>
                         <span className="text-[8px] text-neutral-400">Share</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://wa.me/?text=Join%20me%20on%208111C!%20https://8111C.com/invite", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" className="w-8 h-8" />
                         <span className="text-[8px] text-neutral-400">WhatsApp</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://t.me/share/url?url=https://8111C.com/invite&text=Join%20me!", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="TG" className="w-8 h-8" />
                         <span className="text-[8px] text-neutral-400">Telegram</span>
                       </div>
-                      <div className="flex flex-col items-center gap-1 cursor-pointer">
+                      <div onClick={() => window.open("https://www.facebook.com/sharer/sharer.php?u=https://8111C.com/invite", "_blank")} className="flex flex-col items-center gap-1 cursor-pointer">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" alt="FB" className="w-8 h-8" />
                         <span className="text-[8px] text-neutral-400">Facebook</span>
                       </div>
@@ -439,10 +440,10 @@ export default function InvitePage() {
                 <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Today <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                <button onClick={() => toast.success("Sorting applied")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Sort by login date <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                <button onClick={() => toast("Search feature coming soon")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
                   Member ID
                   <span className="text-[#ffdf00]">🔍</span>
                 </button>
@@ -466,10 +467,10 @@ export default function InvitePage() {
                 <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Today <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-[#ffdf00] rounded-full px-3 py-1 flex items-center gap-1 text-[#ffdf00] text-[11px] bg-[#2e0505]">
+                <button onClick={() => toast.success("Dropdown opened")} className="border border-[#ffdf00] rounded-full px-3 py-1 flex items-center gap-1 text-[#ffdf00] text-[11px] bg-[#2e0505]">
                   Valid bet sorting <ChevronLeft className="w-3 h-3 -rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                <button onClick={() => toast("Search feature coming soon")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
                   Member ID
                   <span className="text-[#ffdf00]">🔍</span>
                 </button>
@@ -499,10 +500,10 @@ export default function InvitePage() {
                 <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Today <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                <button onClick={() => toast.success("Sorting applied")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Sort by recharge... <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                <button onClick={() => toast("Search feature coming soon")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
                   Member ID
                   <span className="text-[#ffdf00]">🔍</span>
                 </button>
@@ -525,10 +526,10 @@ export default function InvitePage() {
                 <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Today <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
+                <button onClick={() => toast.success("Sorting applied")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center gap-1 text-neutral-300 text-[11px]">
                   Total collection o... <ChevronLeft className="w-3 h-3 rotate-90" />
                 </button>
-                <button className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
+                <button onClick={() => toast("Search feature coming soon")} className="border border-neutral-700 rounded-full px-3 py-1 flex items-center justify-between flex-1 text-neutral-500 text-[11px]">
                   Member ID
                   <span className="text-[#ffdf00]">??</span>
                 </button>
