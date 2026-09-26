@@ -42,7 +42,7 @@ export default function ProfilePage() {
             <User className="w-8 h-8 text-neutral-400" />
           </div>
           <div className="flex-1 flex flex-col justify-center">
-            {user ? <div className="flex flex-col"><span className="text-white font-bold text-[14px]">{user.phone || user.email || user.username}</span><span className="text-[#ffdf00] font-bold text-[16px]">Rs {(user.balance || 0).toFixed(2)}</span></div> : <span className="text-neutral-400 text-[13px] leading-tight">Please first <span className="text-white font-bold">Login</span> Or <span className="text-white font-bold">Register</span></span>}
+            {user ? <div className="flex flex-col"><span className="text-white font-bold text-[14px]">{user.phone || user.email}</span><span className="text-[#ffdf00] font-bold text-[16px]">Rs {(user.balance || 0).toFixed(2)}</span></div> : <span className="text-neutral-400 text-[13px] leading-tight">Please first <span className="text-white font-bold">Login</span> Or <span className="text-white font-bold">Register</span></span>}
           </div>
           {!user && <div className="flex gap-2 shrink-0">
             <button className="bg-[#cc0000] text-white font-bold text-[12px] px-4 py-1.5 rounded shadow-lg hover:bg-[#ff0b0b] transition-colors">
