@@ -4,6 +4,8 @@ import { useState } from "react";
 import { ChevronLeft, EyeOff, AlertCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 
+import toast from "react-hot-toast";
+
 export default function WithdrawScreen() {
   const router = useRouter();
   const [password, setPassword] = useState("");

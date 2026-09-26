@@ -7,10 +7,11 @@ import HomeScreen from "@/components/HomeScreen";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
-  const [view, setView] = useState<"splash" | "auth" | "home">("splash");
+  const [view, setView] = useState<"splash" | "home">("splash");
+  const [showAuth, setShowAuth] = useState(false);
 
   return (
-    <main className="min-h-screen bg-black flex flex-col">
+    <main className="min-h-screen bg-black flex flex-col relative">
       <AnimatePresence mode="wait">
         {view === "splash" && (
           <motion.div
@@ -22,35 +23,45 @@ export default function Home() {
               filter: "blur(10px)"
             }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 z-50"
+            className="absolute inset-0 z-[200]"
           >
-            <SplashScreen onComplete={() => setView("auth")} />
+            <SplashScreen onComplete={() => setView("home")} />
           </motion.div>
         )}
         
-        {view === "auth" && (
-          <motion.div
-            key="auth"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full min-h-screen flex flex-col"
-          >
-            <AuthScreen onLogin={() => setView("home")} onClose={() => setView("home")} />
-          </motion.div>
-        )}
-
         {view === "home" && (
           <motion.div
             key="home"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="w-full min-h-screen flex flex-col"
+            className="w-full min-h-screen flex flex-col relative"
           >
-            {/* Added home component dynamically */}
-            <HomeScreen onLoginClick={() => setView("auth")} onRegisterClick={() => setView("auth")} />
+            <HomeScreen onLoginClick={() => setShowAuth(true)} onRegisterClick={() => setShowAuth(true)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {showAuth && (
+          <motion.div
+            key="auth-modal"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="fixed inset-0 z-[150] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          >
+            <div className="w-full max-w-md bg-[#111] rounded-2xl overflow-hidden shadow-2xl relative max-h-[90vh] overflow-y-auto border border-neutral-800">
+               {/* Close button */}
+               <button 
+                 onClick={() => setShowAuth(false)}
+                 className="absolute top-4 right-4 z-50 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-[#cc0000] transition-colors"
+               >
+                 ✕
+               </button>
+               <AuthScreen onLogin={() => setShowAuth(false)} onClose={() => setShowAuth(false)} />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

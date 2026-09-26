@@ -59,7 +59,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
 
 
   return (
-    <div className="min-h-screen w-full bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 to-black text-white font-sans overflow-x-hidden pb-12 flex flex-col items-center">
+    <div className="min-h-[500px] w-full bg-black bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900 to-black text-white font-sans overflow-x-hidden pb-12 flex flex-col items-center">
       
       {/* No Top Banner - Auth is a pure modal overlay */}
 

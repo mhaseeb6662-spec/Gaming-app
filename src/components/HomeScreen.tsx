@@ -275,9 +275,45 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
   const [heroIndex, setHeroIndex] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDepositMenuOpen, setIsDepositMenuOpen] = useState(false);
+  const [gameUrl, setGameUrl] = useState<string | null>(null);
   const { user, logout } = useUser();
 
+
   useEffect(() => {
+    (window as any).handleLaunchGame = async (gameName: string) => {
+      if (!user) {
+        toast.error("Please login to play games!");
+        if (onLoginClick) onLoginClick();
+        return;
+      }
+      const token = localStorage.getItem("token");
+      if (!token) return;
+
+      try {
+        const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000/api/v1";
+        toast.loading(`Launching ${gameName}...`);
+        const res = await fetch(`${API_URL}/games/launch/${encodeURIComponent(gameName)}`, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        toast.dismiss();
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.url) {
+            setGameUrl(data.url);
+          } else {
+            toast.success(`Game ${gameName} launched!`);
+          }
+        } else {
+          const error = await res.json();
+          toast.error(error.message || "Failed to launch game");
+        }
+      } catch (e) {
+        toast.dismiss();
+        toast.error("Error launching game");
+      }
+    };
+
     const timer = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % heroBanners.length);
     }, 3500);
@@ -596,6 +632,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Top Bar */}
@@ -665,6 +706,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
@@ -803,6 +849,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
@@ -851,6 +902,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Main graphic placeholder */}
@@ -919,6 +975,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Optional Star in Top Right */}
@@ -974,6 +1035,11 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 key={gIdx}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).handleLaunchGame) {
+                    (window as any).handleLaunchGame(game.name);
+                  }
+                }}
                 className={`aspect-[3/4] ${game.img} rounded-xl relative overflow-hidden flex flex-col shadow-[0_0_10px_rgba(255,11,11,0.4)] group cursor-pointer border border-[#ff0b0b]`}
               >
                 {/* Optional Star in Top Right */}

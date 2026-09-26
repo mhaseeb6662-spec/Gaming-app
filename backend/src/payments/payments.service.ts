@@ -3,6 +3,7 @@ import { PrismaService } from '../prisma/prisma.service';
 import { WalletService } from '../wallet/wallet.service';
 import { JazzCashProvider } from './providers/jazzcash.provider';
 import { EasypaisaProvider } from './providers/easypaisa.provider';
+import { XpressPayProvider } from './providers/xpresspay.provider';
 import { v4 as uuidv4 } from 'uuid';
 import { PaymentProvider } from '@prisma/client';
 
@@ -12,12 +13,12 @@ export class PaymentsService {
     private prisma: PrismaService,
     private walletService: WalletService,
     private jazzCash: JazzCashProvider,
-    private easyPaisa: EasypaisaProvider
+    private easyPaisa: EasypaisaProvider,
+    private xpressPay: XpressPayProvider
   ) {}
 
   private getProvider(provider: PaymentProvider) {
-    if (provider === 'JAZZCASH') return this.jazzCash;
-    if (provider === 'EASYPAISA') return this.easyPaisa;
+    if (provider === 'JAZZCASH' || provider === 'EASYPAISA') return this.xpressPay; // Use XpressPay for both!
     throw new BadRequestException('Unsupported provider');
   }
 
