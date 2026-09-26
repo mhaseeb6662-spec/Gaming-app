@@ -98,16 +98,14 @@ export default function DepositScreen() {
               </button>
             </div>
 
-            {method.includes("JazzCash") && (
-              <div className="grid grid-cols-3 gap-2 border-t border-neutral-800 pt-3 relative">
-                {["Fast", "Fast", "Fast", "Fast"].map((m, i) => (
-                  <button key={i} className={`relative h-[38px] rounded-md border flex items-center justify-center text-[13px] ${i === 0 ? "border-[#1fdf1f] text-[#1fdf1f]" : "border-neutral-700 text-white"}`}>
-                    JazzCash
-                    <span className="absolute -top-1.5 -right-1 bg-[#ff0b0b] text-white text-[8px] font-bold px-1 rounded-sm">Fast</span>
-                  </button>
-                ))}
-              </div>
-            )}
+            <div className="grid grid-cols-3 gap-2 border-t border-neutral-800 pt-3 relative">
+              {["Fast", "Fast", "Fast", "Fast"].map((m, i) => (
+                <button key={i} className={`relative h-[38px] rounded-md border flex items-center justify-center text-[13px] ${i === 0 ? "border-[#1fdf1f] text-[#1fdf1f]" : "border-neutral-700 text-white"}`}>
+                  {method}
+                  <span className="absolute -top-1.5 -right-1 bg-[#ff0b0b] text-white text-[8px] font-bold px-1 rounded-sm">Fast</span>
+                </button>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="mb-6">
