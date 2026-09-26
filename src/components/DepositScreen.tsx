@@ -43,9 +43,7 @@ export default function DepositScreen() {
       if (res.ok) {
         toast.success("Deposit request sent! Pending admin approval.");
         setAmount("");
-        if (resData.payment_url) {
-          window.open(resData.payment_url, "_blank");
-        }
+        // No redirect to fake payment url
         router.push("/profile");
       } else {
         toast.error(resData.message || "Deposit failed");
