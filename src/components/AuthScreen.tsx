@@ -42,7 +42,7 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
         if (data.user && (data.user.role === "SUPER_ADMIN" || data.user.role === "ADMIN")) {
           window.location.href = "/admin";
         } else {
-          if (onLogin) onLogin();
+          setShowLuckyDrawPopup(true);
         }
       } else {
         // Log them in immediately after register
