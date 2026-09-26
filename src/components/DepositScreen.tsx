@@ -35,7 +35,7 @@ export default function DepositScreen() {
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
         body: JSON.stringify({
           amount: Number(amount),
-          provider: tab === "online" ? method.toUpperCase() : "CRYPTO",
+          provider: tab === "online" ? method.toUpperCase() : "MANUAL",
         }),
       });
       
@@ -43,7 +43,10 @@ export default function DepositScreen() {
       if (res.ok) {
         toast.success("Deposit request sent! Pending admin approval.");
         setAmount("");
-        if (resData.url) window.location.href = resData.url;
+        if (resData.payment_url) {
+          window.open(resData.payment_url, "_blank");
+        }
+        router.push("/profile");
       } else {
         toast.error(resData.message || "Deposit failed");
       }
