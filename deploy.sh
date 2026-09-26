@@ -57,6 +57,10 @@ if ! grep -q "DATABASE_URL" backend/.env; then
     echo "DATABASE_URL=\"$DATABASE_URL\"" >> backend/.env
 fi
 
+if ! grep -q "PORT=" backend/.env; then
+    echo "PORT=3001" >> backend/.env
+fi
+
 # 4. Build Frontend and Backend
 echo "[4/6] Installing dependencies and building..."
 rm -rf node_modules

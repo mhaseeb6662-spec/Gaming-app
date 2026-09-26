@@ -67,7 +67,7 @@ export default function RegistrationSuccessPopup({ onClose, onNext }: { onClose:
                 <span>🎁</span> Recharge Gift
               </div>
               <button 
-                onClick={onNext}
+                onClick={() => window.location.href = '/deposit'}
                 className="w-full h-[42px] bg-[#66df2f] rounded-lg text-black text-sm font-medium flex items-center justify-center gap-1 hover:bg-[#55cc25] transition-colors shadow-[0_2px_10px_rgba(102,223,47,0.3)]"
               >
                 <span>🐷</span> Deposit Now

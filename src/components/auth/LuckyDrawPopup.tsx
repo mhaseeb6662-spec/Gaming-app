@@ -139,7 +139,7 @@ export default function LuckyDrawPopup({ onClose }: { onClose: () => void }) {
                   +3%
                 </div>
                 <button 
-                  onClick={onClose}
+                  onClick={() => window.location.href = '/deposit'}
                   className="w-full bg-[#66df2f] rounded-lg text-black font-medium py-2.5 hover:bg-[#55cc25] transition-colors"
                 >
                   Deposit

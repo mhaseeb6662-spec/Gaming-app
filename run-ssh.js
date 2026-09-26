@@ -1,9 +1,11 @@
-const { Client } = require('ssh2');
+const fs = require('fs');
+const scriptContent = fs.readFileSync('deploy.sh', 'utf8');
 
+const { Client } = require('ssh2');
 const conn = new Client();
 conn.on('ready', () => {
   console.log('Client :: ready');
-  conn.exec('wget -O deploy.sh https://raw.githubusercontent.com/mhaseeb6662-spec/Gaming-app/main/deploy.sh && chmod +x deploy.sh && ./deploy.sh', (err, stream) => {
+  conn.exec(scriptContent, (err, stream) => {
     if (err) throw err;
     stream.on('close', (code, signal) => {
       console.log('Stream :: close :: code: ' + code + ', signal: ' + signal);

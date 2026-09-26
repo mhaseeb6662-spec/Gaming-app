@@ -350,7 +350,7 @@ export default function HomeScreen({ onLoginClick, onRegisterClick }: { onLoginC
                 <div className="absolute -top-1.5 -right-1.5 bg-[#ff0b0b] text-white text-[9px] font-bold px-1 rounded-sm z-10 shadow-md transform rotate-12">
                   +3%
                 </div>
-                <button className="bg-[#66df2f] hover:bg-[#55cc25] text-black px-2.5 rounded-lg text-[13px] font-bold min-w-[80px] flex items-center justify-center gap-1 shadow-[0_2px_10px_rgba(102,223,47,0.3)] transition-colors h-[32px]">
+                <button onClick={() => window.location.href = '/deposit'} className="bg-[#66df2f] hover:bg-[#55cc25] text-black px-2.5 rounded-lg text-[13px] font-bold min-w-[80px] flex items-center justify-center gap-1 shadow-[0_2px_10px_rgba(102,223,47,0.3)] transition-colors h-[32px]">
                   Deposit
                   <svg className="w-3 h-3 opacity-80 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
