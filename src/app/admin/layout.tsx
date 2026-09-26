@@ -44,6 +44,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <LayoutDashboard className="w-5 h-5 text-[#ffdf00]" />
             <span className="text-sm font-medium">Dashboard</span>
           </Link>
+          <Link href="/admin/users" className="flex items-center gap-2 px-4 py-2.5 rounded-lg hover:bg-[#1a1a1a] transition-colors whitespace-nowrap">
+            <Users className="w-5 h-5 text-[#ffdf00]" />
+            <span className="text-sm font-medium">Manage Users</span>
+          </Link>
+          <Link href="/admin/financials" className="flex items-center gap-2 px-4 py-2.5 rounded-lg hover:bg-[#1a1a1a] transition-colors whitespace-nowrap">
+            <Wallet className="w-5 h-5 text-[#ffdf00]" />
+            <span className="text-sm font-medium">Financials</span>
+          </Link>
         </nav>
 
         <div className="p-4 border-t border-neutral-800 mt-auto hidden md:block">

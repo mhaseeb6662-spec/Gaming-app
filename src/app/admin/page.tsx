@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Users, CreditCard, Download, Activity, RefreshCw } from "lucide-react";
+import Link from "next/link";
 
 export default function AdminDashboardPage() {
   const [data, setData] = useState<any>(null);
@@ -70,20 +71,19 @@ export default function AdminDashboardPage() {
       <div className="mt-8 bg-[#111] border border-neutral-800 rounded-xl p-6">
         <h2 className="text-lg font-bold text-white mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-4">
-          <button className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
+          <Link href="/admin/users" className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
             Manage Users
-          </button>
-          <button className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
+          </Link>
+          <Link href="/admin/financials?tab=deposits" className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
             Review Deposits
-          </button>
-          <button className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
+          </Link>
+          <Link href="/admin/financials?tab=withdrawals" className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
             Review Withdrawals
-          </button>
-          <button className="px-4 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg text-sm font-medium text-[#ffdf00] transition-colors border border-neutral-700 hover:border-[#ffdf00]/50">
-            Audit Logs
+          </Link>
+          <button className="px-4 py-2 bg-neutral-800 opacity-50 cursor-not-allowed rounded-lg text-sm font-medium text-neutral-400 transition-colors border border-neutral-700">
+            Audit Logs (Coming Soon)
           </button>
         </div>
-        <p className="text-xs text-neutral-500 mt-4 italic">Note: These sections are being rolled out gradually.</p>
       </div>
     </div>
   );
