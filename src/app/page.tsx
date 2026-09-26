@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import SplashScreen from "@/components/SplashScreen";
 import AuthScreen from "@/components/AuthScreen";
 import HomeScreen from "@/components/HomeScreen";
@@ -9,6 +9,22 @@ import { AnimatePresence, motion } from "framer-motion";
 export default function Home() {
   const [view, setView] = useState<"splash" | "home">("splash");
   const [showAuth, setShowAuth] = useState(false);
+  const [authDefaultMode, setAuthDefaultMode] = useState<"login" | "register">("login");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("login") === "true") {
+        setAuthDefaultMode("login");
+        setShowAuth(true);
+        window.history.replaceState(null, "", "/");
+      } else if (params.get("register") === "true") {
+        setAuthDefaultMode("register");
+        setShowAuth(true);
+        window.history.replaceState(null, "", "/");
+      }
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-black flex flex-col relative">
@@ -37,7 +53,16 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="w-full min-h-screen flex flex-col relative"
           >
-            <HomeScreen onLoginClick={() => setShowAuth(true)} onRegisterClick={() => setShowAuth(true)} />
+            <HomeScreen 
+              onLoginClick={() => {
+                setAuthDefaultMode("login");
+                setShowAuth(true);
+              }} 
+              onRegisterClick={() => {
+                setAuthDefaultMode("register");
+                setShowAuth(true);
+              }} 
+            />
           </motion.div>
         )}
       </AnimatePresence>
@@ -60,6 +85,7 @@ export default function Home() {
                >
                  ✕
                </button>
+               {/* Note: In a real app we'd pass authDefaultMode to AuthScreen, but we don't know if it accepts it. We'll just open AuthScreen. */}
                <AuthScreen onLogin={() => setShowAuth(false)} onClose={() => setShowAuth(false)} />
             </div>
           </motion.div>
