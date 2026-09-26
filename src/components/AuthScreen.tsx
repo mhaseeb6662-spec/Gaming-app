@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { Eye, EyeOff, Gamepad2, ShieldCheck, Lock, Smartphone, Gift, X } from "lucide-react";
 import { useUser } from "@/context/UserContext";
+import RegistrationSuccessPopup from "./auth/RegistrationSuccessPopup";
+import LuckyDrawPopup from "./auth/LuckyDrawPopup";
 
 export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void, onClose?: () => void }) {
   const { login } = useUser();
@@ -14,6 +16,8 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
+  const [showLuckyDrawPopup, setShowLuckyDrawPopup] = useState(false);
 
   const handleSubmit = async () => {
     if (!identifier || !password) return alert("Please enter credentials");
@@ -41,8 +45,10 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
           if (onLogin) onLogin();
         }
       } else {
-        alert("Registered successfully! Please login.");
-        setActiveTab("login");
+        // Log them in immediately after register
+        // Note: data.user might not exist in register response, but token does
+        login(data.access_token, data.user || null);
+        setShowSuccessPopup(true);
       }
     } catch (e: any) {
       alert(e.message);
@@ -261,6 +267,17 @@ export default function AuthScreen({ onLogin, onClose }: { onLogin?: () => void,
           </button>
         </div>
       </motion.div>
+      {showSuccessPopup && (
+        <RegistrationSuccessPopup 
+          onClose={() => { setShowSuccessPopup(false); if (onLogin) onLogin(); }} 
+          onNext={() => { setShowSuccessPopup(false); setShowLuckyDrawPopup(true); }} 
+        />
+      )}
+      {showLuckyDrawPopup && (
+        <LuckyDrawPopup 
+          onClose={() => { setShowLuckyDrawPopup(false); if (onLogin) onLogin(); }} 
+        />
+      )}
     </div>
   );
 }
