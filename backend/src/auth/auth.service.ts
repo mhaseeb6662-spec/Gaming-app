@@ -58,6 +58,7 @@ export class AuthService {
           { username: dto.identifier }
         ],
       },
+      include: { wallet: true }
     });
 
     if (!user) throw new UnauthorizedException('Invalid credentials');
@@ -67,8 +68,14 @@ export class AuthService {
     if (!isMatch) throw new UnauthorizedException('Invalid credentials');
 
     const tokens = await this.generateTokens(user.id, user.role);
-    const { password_hash, ...safeUser } = user;
-    return { ...tokens, user: safeUser };
+    const { password_hash, wallet, ...safeUser } = user;
+    return { 
+      ...tokens, 
+      user: {
+        ...safeUser,
+        balance: wallet ? wallet.balance.toNumber() : 0
+      } 
+    };
   }
 
   async refreshToken(refreshToken: string) {
@@ -83,11 +90,15 @@ export class AuthService {
   async getMe(userId: string) {
     const user = await this.prisma.user.findUnique({
       where: { id: userId },
+      include: { wallet: true }
     });
     if (!user) throw new UnauthorizedException();
     
-    const { password_hash, ...safeUser } = user;
-    return safeUser;
+    const { password_hash, wallet, ...safeUser } = user;
+    return {
+      ...safeUser,
+      balance: wallet ? wallet.balance.toNumber() : 0
+    };
   }
 
   private async generateTokens(userId: string, role: string) {
