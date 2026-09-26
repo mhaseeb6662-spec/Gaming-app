@@ -8,7 +8,7 @@ import { useUser } from "@/context/UserContext";
 
 export default function WithdrawScreen() {
   const router = useRouter();
-  const { user, fetchUser } = useUser();
+  const { user, refreshUser } = useUser();
   const [hasPassword, setHasPassword] = useState<boolean | null>(null);
   
   const [password, setPassword] = useState("");
@@ -92,7 +92,7 @@ export default function WithdrawScreen() {
         setAmount("");
         setAccountNo("");
         setWithdrawPwd("");
-        if (fetchUser) fetchUser(); // Refresh balance
+        if (refreshUser) refreshUser(); // Refresh balance
         router.push("/profile");
       } else {
         toast.error(data.message || "Failed to withdraw");
