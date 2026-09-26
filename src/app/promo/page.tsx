@@ -15,6 +15,41 @@ export default function PromoPage() {
   const [activeSpinWheel, setActiveSpinWheel] = useState("Silver");
   const [activeSpinTimes, setActiveSpinTimes] = useState(1);
   const [vip1Expanded, setVip1Expanded] = useState(true);
+  const [luckyPoints, setLuckyPoints] = useState(150000);
+  const [isSpinning, setIsSpinning] = useState(false);
+  const [spinRotation, setSpinRotation] = useState(0);
+
+  const handleSpin = () => {
+    if (isSpinning) return;
+    
+    let cost = 10000;
+    if (activeSpinWheel === "Gold") cost = 50000;
+    if (activeSpinWheel === "Diamond") cost = 150000;
+    
+    const totalCost = cost * activeSpinTimes;
+    
+    if (luckyPoints < totalCost) {
+      toast.error("Insufficient lucky points to spin");
+      return;
+    }
+
+    setLuckyPoints(prev => prev - totalCost);
+    setIsSpinning(true);
+    
+    const extraSpins = 5 * 360; // 5 full rotations
+    const randomSegment = Math.floor(Math.random() * 10);
+    const stopAngle = extraSpins + (randomSegment * 36) + 18; // point to middle of segment
+    
+    setSpinRotation(prev => prev + stopAngle);
+    
+    setTimeout(() => {
+      setIsSpinning(false);
+      const prizes = [7.00, 10.00, 15.00, 27.00, 77.00, 130.00, 200.00, 250.00, 300.00, 377.00];
+      // Due to rotation backwards vs prize array
+      const wonAmount = prizes[(10 - randomSegment % 10) % 10] * activeSpinTimes;
+      toast.success(`Congratulations! You won Rs ${wonAmount.toFixed(2)}`, { duration: 4000 });
+    }, 3000);
+  };
   
   const [showPhoneModal, setShowPhoneModal] = useState(false);
   const [showRedeemModal, setShowRedeemModal] = useState(false);
@@ -367,7 +402,7 @@ export default function PromoPage() {
               <div className="bg-black/60 rounded-xl p-3 flex justify-between items-center border border-neutral-800 shadow-xl backdrop-blur-sm mb-6">
                 <div className="flex items-center gap-2">
                   <span className="text-[#ffdf00] text-[20px] drop-shadow-md">⭐</span>
-                  <span className="text-white font-bold text-[16px]">0</span>
+                  <span className="text-white font-bold text-[16px]">{luckyPoints.toLocaleString()}</span>
                   <RefreshCw onClick={() => toast.success("Lucky points updated")} className="w-4 h-4 text-[#ff0b0b] cursor-pointer" />
                 </div>
                 <div className="flex items-center gap-2">
@@ -412,20 +447,24 @@ export default function PromoPage() {
                 
                 {/* Wheel Base */}
                 <div className="w-full h-full rounded-full border-[10px] border-neutral-300/20 bg-gradient-to-br from-[#cc0000] to-[#4a0000] relative overflow-hidden flex items-center justify-center shadow-2xl">
-                  {/* Wheel segments using CSS conic gradient */}
-                  <div className="absolute inset-0 rounded-full" style={{ background: 'conic-gradient(#cc0000 0deg 36deg, #ff0b0b 36deg 72deg, #cc0000 72deg 108deg, #ff0b0b 108deg 144deg, #cc0000 144deg 180deg, #ff0b0b 180deg 216deg, #cc0000 216deg 252deg, #ff0b0b 252deg 288deg, #cc0000 288deg 324deg, #ff0b0b 324deg 360deg)' }}></div>
                   
-                  {/* Inner text (Simulated) */}
-                  <div className="absolute inset-0 flex items-center justify-center rotate-[-18deg]">
-                    {[7.00, 10.00, 15.00, 27.00, 77.00, 130.00, 200.00, 250.00, 300.00, 377.00].map((amt, i) => (
-                      <div key={i} className="absolute w-full h-full flex justify-center pt-4" style={{ transform: `rotate(${i * 36}deg)` }}>
-                        <span className="text-[#ffdf00] font-bold text-[11px] drop-shadow-md">{amt.toFixed(2)}</span>
-                      </div>
-                    ))}
+                  {/* Rotatable Layer */}
+                  <div className="absolute inset-0 w-full h-full" style={{ transform: `rotate(-${spinRotation}deg)`, transition: isSpinning ? "transform 3s cubic-bezier(0.17, 0.67, 0.12, 0.99)" : "none" }}>
+                    {/* Wheel segments using CSS conic gradient */}
+                    <div className="absolute inset-0 rounded-full" style={{ background: 'conic-gradient(#cc0000 0deg 36deg, #ff0b0b 36deg 72deg, #cc0000 72deg 108deg, #ff0b0b 108deg 144deg, #cc0000 144deg 180deg, #ff0b0b 180deg 216deg, #cc0000 216deg 252deg, #ff0b0b 252deg 288deg, #cc0000 288deg 324deg, #ff0b0b 324deg 360deg)' }}></div>
+                    
+                    {/* Inner text (Simulated) */}
+                    <div className="absolute inset-0 flex items-center justify-center rotate-[-18deg]">
+                      {[7.00, 10.00, 15.00, 27.00, 77.00, 130.00, 200.00, 250.00, 300.00, 377.00].map((amt, i) => (
+                        <div key={i} className="absolute w-full h-full flex justify-center pt-4" style={{ transform: `rotate(${i * 36}deg)` }}>
+                          <span className="text-[#ffdf00] font-bold text-[11px] drop-shadow-md">{amt.toFixed(2)}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   
                   {/* Center Draw Button */}
-                  <div onClick={() => toast.error("Insufficient lucky points to spin")} className="w-20 h-20 bg-gradient-to-br from-[#2e0505] to-[#111] rounded-full z-10 flex flex-col items-center justify-center border-4 border-[#ffdf00] shadow-[0_0_20px_rgba(255,223,0,0.5)] cursor-pointer hover:scale-105 transition-transform">
+                  <div onClick={handleSpin} className={`w-20 h-20 bg-gradient-to-br from-[#2e0505] to-[#111] rounded-full z-10 flex flex-col items-center justify-center border-4 border-[#ffdf00] shadow-[0_0_20px_rgba(255,223,0,0.5)] transition-transform ${isSpinning ? 'opacity-70 scale-95' : 'cursor-pointer hover:scale-105'}`}>
                     <span className="text-[#ffdf00] font-black text-[11px]">x0</span>
                     <span className="text-white font-bold text-[14px]">Draw</span>
                   </div>
